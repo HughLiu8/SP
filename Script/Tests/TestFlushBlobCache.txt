@@ -1,0 +1,6 @@
+$webAppURL = "http://hector7:1111"
+
+$webApp = Get-SPWebApplication $webAppURL
+[Microsoft.SharePoint.Publishing.PublishingCache]::FlushBlobCache($webApp)
+Write-Host "Flushed the BLOB cache for:" $webApp
+

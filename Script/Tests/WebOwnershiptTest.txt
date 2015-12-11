@@ -1,0 +1,50 @@
+$WebAppURL = "https://www22.kisp.com/"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+
+#site collection
+foreach ($SPSite in $SPweb.sites)
+{
+	$site = $SPSite.OpenWeb()
+	"site url:" + $SPSite.url
+	#site
+	foreach($web in $SPSite.AllWebs) 
+	{
+		"*** web url:" + $web.Url	
+		#page
+        if ([Microsoft.SharePoint.Publishing.PublishingWeb]::IsPublishingWeb($web)) {
+            $pWeb = [Microsoft.SharePoint.Publishing.PublishingWeb]::GetPublishingWeb($web)
+            $pages = $pWeb.PagesList
+              
+            "****** Processing Publishing Web:" + $pWeb.Url
+                                   
+            foreach ($item in $pages.Items) {
+                $fileUrl = $webUrl + "/" + $item.File.Url
+                "********* PageUrl:" + $fileUrl      
+                
+                #$wps | select-object @{Expression={$pWeb.Url};Label="Web URL"},@{Expression={$fileUrl};Label="Page URL"}, DisplayTitle, IsVisible, @{Expression={$_.GetType().ToString()};Label="Type"}                
+            }            
+        }
+        else {
+            #"   Not a publishing web:" + $web.Url + ". Looking for Site Pages library."
+            $pages = $null
+            $pages = $web.Lists["Site Pages"]
+            
+            if ($pages) {
+				"****** Processing Web of Site Pages library:" + $pWeb.Url
+                #"   " + $pages.Title + "found."
+                
+                foreach ($item in $pages.Items) {
+                    $fileUrl = $webUrl + "/" + $item.File.Url
+					"********* PageUrl:" + $fileUrl 
+                   
+                }                
+            }
+            else {
+               "    Site Pages library not found."               
+            }            
+        }
+
+	}
+}
+

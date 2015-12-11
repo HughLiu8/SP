@@ -1,0 +1,33 @@
+$sitecollection = "http://hector7:7777/sites/hw1"
+
+$SPSite = Get-SPSite -Identity $sitecollection
+
+"site.url:" + $SPSite.url
+foreach($web in $SPSite.AllWebs) 
+{
+	$listnameshowed = 0
+	foreach($list in $web.lists)
+	{ 
+		$listTitle = $list.title
+		"list tile:" + $listTitle
+		$listItemsCollection = $list.GetItems();
+
+		foreach($items in $listItemsCollection) 
+		{ 
+			"--items name:" + $items.name
+		} 	
+		
+		foreach($item in $list.folders) 
+		{ 
+			"--folder item name name:" + $item.name
+			$folder = $item.folder
+			"--folder name:" + $folder.name
+
+			foreach($file in $folder.files)
+			{
+				"----file name: " + $file.name
+			}
+		} 	
+
+	}
+}

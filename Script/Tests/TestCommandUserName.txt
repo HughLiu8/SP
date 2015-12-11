@@ -1,0 +1,43 @@
+$WebAppURL = "https://www22.kisp.com/"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+
+foreach ($SPSite in $SPweb.sites)
+{
+
+	"site.url:" + $SPSite.url
+	foreach($web in $SPSite.AllWebs) 
+	{
+
+		$listnameshowed = 0
+		foreach($list in $web.lists)
+		{ 
+			$listTitle = $list.title
+			if ($listTitle -eq "Test")
+			{
+				"list tile:" + $listTitle
+				$Query ="<OrderBy><FieldRef Name='Modified' Ascending='False' /></OrderBy><Where><Or><IsNull><FieldRef Name='Expires'/></IsNull><Geq><FieldRef Name='Expires'/><Value Type='DateTime'><Today/></Value></Geq></Or></Where>";
+				$listItemsCollection = $list.GetItems();
+
+				foreach($items in $listItemsCollection) 
+				{ 
+				  "items:" + $items
+				  "items name:" + $items.name
+				  "items title:" + $items.title
+				  $audienceFieldValue=$items["Target Audiences"]
+				  "audienceFieldValue:" + $audienceFieldValue
+				  if($audienceFieldValue.length -gt 0)
+				  {
+					"audienceFieldValue length: " + $audienceFieldValue.length
+				  }
+			  
+
+				} 			
+			}
+	
+			
+		}
+	}
+	break
+}
+

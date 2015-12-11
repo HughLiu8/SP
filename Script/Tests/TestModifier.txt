@@ -1,0 +1,50 @@
+$sitecollection = "http://hector7:1111/snaptrackerweb60_0_1"
+
+$SPSite = Get-SPSite -Identity $sitecollection
+
+function Test()
+{
+	$site = $SPSite.OpenWeb()
+	"site url" + $SPSite.url
+	"--web url"
+	#foreach ($web in $SPSite.AllWebs) 
+	#{
+		$web = $SPSite.RootWeb
+		"--" + $web.url
+		$folder = ($web).GetFolder("Style Library")
+		$destUrl = $web.url + "/Style Library/" + "SnapTracker.css"
+		$CSS = $web.GetFile($destUrl)
+		
+		" "
+		$outputtext = "---CSS Url: " + $destUrl  
+		write-output $outputtext
+		$outputtext = "---CSS: " + $CSS.name + " CSS Modifier:" + $CSS.ModifiedBy.loginname + " Version:" + $CSS.versions[0].CreatedBy.loginname + " Name:" + $CSS.versions[0].CreatedBy.name
+		
+		write-output $outputtext
+		$outputtext ="---TimeLastModified: " + $CSS.TimeLastModified
+		
+		     
+        Write-Host "Modified: " $CSS.TimeLastModified            
+        Write-Host "Modified By: " $CSS.ModifiedBy            
+        Write-Host "Created: " $CSS.TimeCreated    
+		Write-Host "Created By: " $CSS.Author           
+		
+		" "
+		$destUrl = $web.Url + "/_catalogs/masterpage/" + "SnapTracker.master"
+		$master = $web.GetFile($destUrl)
+		$outputtext = "---master Url:" + $destUrl  
+		write-output $outputtext
+		$outputtext = "---master: " + $master.name + " master Modifier:" + $master.ModifiedBy.loginname + " Version:" + $master.versions[0].CreatedBy.loginname + " Name:" + $CSS.versions[0].CreatedBy.name
+		write-output $outputtext
+		
+		" "
+
+
+		
+	#}
+
+}
+
+Test
+
+

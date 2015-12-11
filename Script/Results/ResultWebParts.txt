@@ -1,0 +1,28 @@
+*** Running script on http://vmspqaw27:7777
+*** Running script on https://www22.kisp.com/adt
+*** Running script on https://www22.kisp.com/ge
+*** Running script on https://www22.kisp.com/qa
+*** Running script on https://www22.kisp.com/silver
+*** Running script on https://www22.kisp.com/sites/stephen
+****** Web Part:Get started with your site, Audience:;;;;Excel Services Viewers,stephen Members
+****** Web Part:Content Editor, Audience:;;;;stephen Owners
+*** Running script on https://www27.kisp.com/erac1
+*** Running script on https://www27.kisp.com/qaDemo
+*** Running script on https://www27.kisp.com/qasp
+*** Running script on https://www27.kisp.com/share
+*** ALL DONE ***
+
+$a3 = 0
+
+function testfunc($a1, $a2, $a3)
+{
+   "test" + $a1
+   "test" + $a2
+   "test" + $a3
+   $r = "3"
+   return $r
+}
+
+$result = testfunc 1 3 5
+$result
+$result

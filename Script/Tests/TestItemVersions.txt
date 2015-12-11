@@ -1,0 +1,53 @@
+$sitecollection = "http://hector7:1111/snaptrackerweb60_0_1/"
+
+$masterName = "SnapTracker.master"
+$cssName = "SnapTracker.css"
+
+$SPSite = Get-SPSite -Identity $sitecollection
+
+
+	$site = $SPSite.OpenWeb()
+	"site url" + $SPSite.url
+	"--web url"
+	foreach ($web in $SPSite.AllWebs) 
+	{
+		"--" + $web.url
+		
+		$destUrl = $web.Url + "/_catalogs/masterpage/" + $masterName;
+		
+		$CurFile = $web.GetFile($destUrl)
+		$firstVersion = $CurFile.versions[0]
+		"      		master page first Version ID" + $firstVersion.VersionId + " item CreatedBy:" + $firstVersion.CreatedBy.LoginName + " Created date: " + $firstVersion.Created
+		
+		$folder = ($web).GetFolder("Style Library")
+		$destUrl = $folder.url + "/" + $cssName;
+		$CurFile = $web.GetFile($destUrl)
+		$firstVersion = $CurFile.versions[0]
+		"      		CSS first Version ID" + $firstVersion.VersionId + " item CreatedBy:" + $firstVersion.CreatedBy.LoginName + " Created date: " + $firstVersion.Created
+		
+		foreach($list in $web.lists)
+		{ 
+			#"----list title"
+			#"    "+$list.title
+			foreach($item in $list.items)
+			{
+				#"      Item Name:" + $item.name 
+
+				foreach($version in $item.versions)
+				{
+					#$name = $version.CreatedBy.LoginName
+					#$name = $name.SubString($name.LastIndexOf("|") + 1, $name.length - $name.LastIndexOf("|") - 1)
+					#"      		Version ID" + $version.VersionId + " item CreatedBy:" + $name + "Created date: " + $version.Created
+					
+					
+				}
+				#$lastVersion = $item.versions[$item.versions.count-1]
+				#"      		Last Version ID" + $lastVersion.VersionId + " item CreatedBy:" + $lastVersion.CreatedBy.LoginName + "Created date: " + $lastVersion.Created
+				
+				#$firstVersion = $item.versions[0]
+				#"      		first Version ID" + $firstVersion.VersionId + " item CreatedBy:" + $firstVersion.CreatedBy.LoginName + "Created date: " + $firstVersion.Created
+			}
+			
+		}
+	}
+

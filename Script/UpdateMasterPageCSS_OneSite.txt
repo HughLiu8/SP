@@ -1,0 +1,156 @@
+$LayoutPath = "C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\TEMPLATE\LAYOUTS"
+$WebAppURL = "http://hector7:1111"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+
+$ReplacedAccountName = "system"
+
+if($LayoutPath.endswith("/") -eq $false)
+{
+	if($LayoutPath.endswith("\") -eq $false)
+	{
+		$LayoutPath += "\"
+	}
+}
+
+$checkInComment="Check In"
+$publishComment="published"
+$approveComment="Approved"
+
+
+$masterName = "SnapTracker.master"
+$masterFilePath = $LayoutPath + $masterName
+$cssName = "SnapTracker.css"
+$cssFilePath = $LayoutPath + $cssName
+
+function GetLatestModifiedUserName($item)
+{
+	$LatestVersion = $CurFile.versions[0]
+	$name = $LatestVersion.CreatedBy.LoginName
+	$name = $name.SubString($name.LastIndexOf("|") + 1, $name.length - $name.LastIndexOf("|") - 1)	
+	$name = $name.SubString($name.LastIndexOf("\") + 1, $name.length - $name.LastIndexOf("\") - 1)	
+	
+	return $name
+}
+
+function UpdateFile($web, $SrcFilePath, $DocumentName, $DestURL)
+{
+	try
+	{
+		$web.AllowUnsafeUpdates=$true;
+		
+		$DocumentFolder = ($web).GetFolder($DocumentName)
+		#$outputtext = "DocumentFolder.Exists: " + $DocumentFolder.Exists + "DestURL: " + $DestURL
+		#write-Output $outputtext
+		
+		$CurFile = $web.GetFile($DestURL)
+		#"CurFile.Exists: " + $CurFile.Exists + "DestURL: " + $DestURL
+		if($CurFile.Exists -eq $false)
+		{
+			return
+		}	
+		
+		$name = GetLatestModifiedUserName $CurFile
+		
+		if($ReplacedAccountName -ne $name)
+		{
+			$output = "****** The LatestModified of file - " + $DestURL + " is created by " + $name +", not by " + $ReplacedAccountName
+			write-Output $output
+			return
+		}	
+		$stream = [IO.File]::OpenRead($SrcFilePath)
+	
+		#"CurFile.CheckOutStatus: " + $CurFile.CheckOutStatus
+		if($CurFile.CheckOutStatus -ne "None")
+		{
+			$DocumentFolder.files.Add($DestURL, $stream, $true)
+		   
+			if($stream -ne $null)
+			{
+				$stream.close()
+			}                                 
+			$CurFile.CheckIn($checkInComment);      
+			try
+			{
+				$CurFile.Publish($publishComment);     
+			}
+			catch
+			{
+				write-Output $_
+			}
+			                  
+			#$CurFile.Approve($approveComment);
+			$CurFile.Update();        
+			$web.Update();
+			$web.AllowUnsafeUpdates  = $false;
+			$outputText = $CurFile.Name + " uploaded on $web site"
+			write-output $outputText
+		}
+		else
+		{
+			$CurFile.CheckOut();
+			try{
+				$DocumentFolder.Files.Add($DestURL, $stream, $true)
+			}
+			catch
+			{
+				if($stream -ne $null)
+				{
+					$stream.close()
+				}  
+				$web.AllowUnsafeUpdates  = $false;
+				write-output "0 exception web url"
+				write-output $web.url
+				write-Output $_
+			}
+			if($stream -ne $null)
+			{
+				$stream.close()
+			}                                  
+			$CurFile.CheckIn($checkInComment);                                     
+			try
+			{
+				$CurFile.Publish($publishComment);     
+			}
+			catch
+			{
+				write-Output $_
+			}                                    
+			#$CurFile.Approve($approveComment);
+			$CurFile.Update();        
+			$web.Update();
+			$web.AllowUnsafeUpdates  = $false;
+			$outputText = $CurFile.Name +  "  uploaded on $web site"
+			write-output $outputText
+		}	
+	}
+	catch
+	{
+		if($stream -ne $null)
+		{
+			$stream.close()
+		}
+
+		$web.AllowUnsafeUpdates  = $false;
+		write-output "1 exception web url"
+		write-output $web.url
+		write-output $_
+	}
+	
+	$web.AllowUnsafeUpdates  = $false;
+}
+
+
+$SPSite = get-spsite -identity "http://evadne7:1111/sites/2"
+$web = $SPSite.RootWeb
+
+#"****** " + $web.url
+$destUrl = $web.Url + "/_catalogs/masterpage/" + $masterName;
+UpdateFile $web $masterFilePath "Master Page Gallery" $destUrl
+
+$folder = ($web).GetFolder("Style Library")
+$destUrl = $folder.url + "/" + $cssName;
+UpdateFile $web $cssFilePath “Style Library” $destUrl
+	
+
+

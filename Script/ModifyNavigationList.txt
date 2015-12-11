@@ -1,0 +1,115 @@
+$WebAppURL = "http://hector7:1111"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+foreach ($SPSite in $SPweb.sites)
+{
+	try
+	{
+		$web = $SPSite.rootweb
+		"-- Web URL:" + $web.url
+		$rootweb = $SPSite.rootweb
+		$list = $web.lists["Navigation"]
+		if($null -eq $list)
+		{
+			continue
+		}
+		
+		$findshop = $false
+		foreach($item in $list.items)
+		{
+			if($item.name -eq "Shop")
+			{
+				$item["Sequence"] = 1;
+				$findshop = $true
+			}
+		
+			if($item.name -eq "Back to Home")
+			{
+				$item["Sequence"] = 2;
+			}
+			
+			if($item.name -eq "Library")
+			{
+				$item["Sequence"] = 3;
+			}
+
+			if($item.name -eq "Photo Gallery")
+			{
+				$item["Sequence"] = 4;
+			}
+
+			if($item.name -eq "Product Standards")
+			{
+				$item["Sequence"] = 5;
+			}
+
+			if($item.name -eq "Contacts")
+			{
+				$item["Sequence"] = 6;
+			}
+
+			if($item.name -eq "Reports")
+			{
+				$item["Sequence"] = 7;
+			}
+
+			if($item.name -eq "Add/Edit Product")
+			{
+				$item["Sequence"] = 8;
+			}
+
+			if($item.name -eq "Upload Product Files")
+			{
+				$item["Sequence"] = 9;
+			}
+
+			if($item.name -eq "Manage Contacts")
+			{
+				$item["Sequence"] = 10;
+			}
+
+			if($item.name -eq "Upload Contact Files")
+			{
+				$item["Sequence"] = 11;
+			}
+
+			if($item.name -eq "Edit Welcome Page")
+			{
+				$item["Sequence"] = 12;
+			}
+
+			if($item.name -eq "Manage Gallery")
+			{
+				$item["Sequence"] = 13;
+			}	
+
+			if($item.name -eq "Manage Navigation")
+			{
+				$item["Sequence"] = 14;
+			}	
+
+			$item.update()
+		}
+		
+		if($findshop -eq $false)
+		{
+			$shopitem = $list.additem()
+			$shopitem["Name"] = "Shop"
+			$shopitem["Title"] = "Shop"
+			$shopitem["DisplayTitle"] = "Shop"
+			$shopitem["Sequence"] = 1
+			
+			$shopitem.update()
+			
+			"---- Add Shop Item"
+		}
+		
+		"---- Navigation Updated"
+		$list.update()	
+	}
+	catch
+	{
+		write-output $_
+	}
+
+}

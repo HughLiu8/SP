@@ -1,0 +1,41 @@
+*** Running script on http://vmspw6/
+*** Running script on http://vmspw6:7777/
+*** Running script on https://allsteelmanufacturersp.kisp.com/
+*** Running script on https://bar001sp.kisp.com/
+*** Running script on https://carlossp.kisp.com/
+*** Running script on https://ceciliasp.kisp.com/
+*** Running script on https://halliburtonsp.kisp.com/
+*** Running script on https://honmanufacturersp.kisp.com/
+*** Running script on https://proconlysp.kisp.com/
+*** Running script on https://procurementsp.kisp.com/
+*** Running script on https://productionsp.kisp.com/
+*** Running script on https://qademosp.kisp.com/
+****** Web Site URL:https://qademosp.kisp.com/A-CUS8845
+********* List Title: Picture Gallery
+************ Item Name: ConferenceArea-AhrendMehes1-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Owner
+************ Item Name: ConferenceArea-Merge2-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_LimitedViewer
+************ Item Name: PrivateOffice-Align1-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Administrator
+************ Item Name: PrivateOffice-Terrace3-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Contributor
+************ Item Name: PrivateOffice-Terrace4-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Viewer
+ 
+*** Running script on https://qaportalsp.kisp.com/
+*** Running script on https://qatechprod1sp.kisp.com/
+*** Running script on https://saviosp.kisp.com/
+****** Web Site URL:https://saviosp.kisp.com/sites/111
+********* Page URL: https://saviosp.kisp.com/sites/111/SitePages/test.aspx
+************ Web Part: Content Editor
+*************** Audience: ;;;;11 Visitors
+ 
+*** Running script on https://scdemosp.kisp.com/
+*** Running script on https://sharesp.kisp.com/
+*** Running script on https://snaptrackerwebsp.kisp.com/
+*** Running script on https://sunnysp.kisp.com/
+*** Running script on https://www27.kisp.com/
+*** Running script on https://www61.kisp.com/
+*** Running script on https://www62.kisp.com/
+*** ALL DONE ***

@@ -1,0 +1,17 @@
+$WebAppURL = "https://saviosp.kisp.com/"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+
+#site collection
+foreach ($SPSite in $SPweb.sites)
+{
+	$site = $SPSite.OpenWeb()
+	"site url:" + $SPSite.url
+	#site
+	foreach($web in $SPSite.AllWebs) 
+	{
+		"*** web url:" + $web.Url	
+
+	}
+}
+

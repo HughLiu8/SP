@@ -1,0 +1,11 @@
+
+
+$Test1 = 0
+if(1 -eq 1)
+{
+	$Test1 = 1
+	"Test1 is $Test1"
+}
+"Test1 is $Test1"
+
+

@@ -1,0 +1,58 @@
+$sitecollection = "http://hector7:1111/snaptrackerweb60_0_1/"
+
+$SPSite = Get-SPSite -Identity $sitecollection
+
+
+	$site = $SPSite.OpenWeb()
+	"site url" + $SPSite.url
+	"--web url"
+	foreach ($web in $SPSite.AllWebs) 
+	{
+		"--" + $web.url
+
+		$folder =  $web.getfolder(“Style Library”)
+		"----StyleLibrary Folder: " + $folder.Url + " exsit: " + $folder.Exists
+		if($folder.Exists -eq $false)
+		{
+		   "----StyleLibrary Folder: 0"
+		}
+		else 
+{
+		   "----StyleLibrary Folder: 1"
+}
+
+		$folder =  $web.getfolder(“Master Page Gallery”)
+		"----StyleLibrary Folder: " + $folder.Url + " exsit: " + $folder.Exists
+		if($folder.Exists -eq $false)
+		{
+		   "----Master Page Gallery Folder: 0"
+		}
+		else 
+{
+		   "----Master Page Gallery Folder: 1"
+}
+
+		$folder =  $web.getfolder("Master Page Gallery")
+		"----Master Page Folder: " + $folder.Url
+
+		$destUrl = $web.Url + "/_catalogs/masterpage/" + "SnapTracker.master";
+		$masterPageFile = $web.GetFile($DestURL)
+		"CurFile.Exists: " + $masterPageFile.Exists + " DestURL: " + $DestURL
+		$masterPageFile.checkout()
+		$masterPageFile.checkin("checkin")
+		$masterPageFile.publish("pusblish")
+		"----masterPageFile: " + $masterPageFile.url + "parent: " + $masterPageFile.folder.name
+		
+		foreach($list in $web.lists)
+		{ 
+			"----list title"
+			"    "+$list.title
+			"------item name"
+			foreach($item in $list.items)
+			{
+				"      " + $item.name + " item editor:" + $item.ModifiedBy.LoginName
+			}
+			
+		}
+	}
+

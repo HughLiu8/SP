@@ -1,0 +1,52 @@
+$BeginYear = 2015
+$BeginMonth = 11
+$BeginDay = 16
+
+#$WebAppURL = "https://www22.kisp.com/"
+#$WebApp = get-spwebapplication -identity $WebAppURL
+
+function IsDateGreatEqaul($Date1, $BeginYear, $BeginMonth, $BeginDay)
+{
+	if($Date1.year -gt $BeginYear)
+	{
+		return 1;
+	}
+
+	if($Date1.year -eq $BeginYear)
+	{
+		if($Date1.month -gt $BeginMonth)
+		{	
+			return 1
+		}
+
+		if($Date1.month -eq $BeginMonth)
+		{
+			if($Date1.day -ge $BeginDay)
+			{
+				return 1
+			}
+		}
+	}
+
+	return 0
+}
+
+#foreach($SPSite in $WebApp.sites)
+#{
+	foreach ($spweb in $SPSite.AllWebs)
+	{   
+		
+			foreach ($list in $spweb.lists)
+			{
+				foreach ($item in $list.items) 
+				{
+					$result = IsDateGreatEqaul $item["Modified"] $BeginYear $BeginMonth $BeginDay
+					if(1 -eq $result)
+					{
+						"   - " + $item["Modified"] + " | " + $spweb.url +"/"+ $item.URL 
+					}
+				}
+			}
+	}
+#}
+

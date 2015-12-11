@@ -1,0 +1,33 @@
+$WebAppURL = "http://hector7:55555"
+
+$SPweb = get-spwebapplication -identity $WebAppURL
+foreach ($SPSite in $SPweb.sites)
+{
+	$SPSite.url + "---SPSite Begin"
+	$site = $SPSite.OpenWeb()
+	$groups = $site.sitegroups
+	foreach ($grp in $groups) 
+	{
+		$count = $grp.users.count;
+		$groupName = $grp.name
+		"--Group:" + $groupName 
+		
+		if($count -gt 0)
+		{
+			"----Users"
+			foreach ($user in $grp.users) 
+			{
+				$name = $user.loginname
+				#$name = $name.SubString($name.LastIndexOf("|") + 1, $name.length - $name.LastIndexOf("|") - 1)
+				"    " + $user.name + ", " + $name					
+			}	
+		}
+		else
+		{
+			"----No Users"
+		}
+		"    "
+	}
+	
+	$SPSite.url + "----SPSite End"
+}

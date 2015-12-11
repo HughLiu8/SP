@@ -1,0 +1,65 @@
+*** Running script on http://vmspqaw27:7777
+*** Running script on https://www22.kisp.com/adt
+*** Running script on https://www22.kisp.com/ge
+*** Running script on https://www22.kisp.com/qa
+*** Running script on https://www22.kisp.com/silver
+*** Running script on https://www22.kisp.com/sites/stephen
+****** Web Site URL:https://www22.kisp.com/sites/stephen
+********* Page URL: https://www22.kisp.com/sites/stephen/SitePages/Home.aspx
+************ Web Part: Get started with your site
+*************** Audience: ;;;;Excel Services Viewers,stephen Members
+************ Web Part: Content Editor
+*************** Audience: ;;;;stephen Owners
+ 
+********* Page URL: https://www22.kisp.com/sites/stephen/SitePages/TestWebPartPage3.aspx
+************ Web Part: Content Editor
+*************** Audience: ;;;;Excel Services Viewers
+ 
+********* List Title: Library2
+************ Item Name: PPT.pptx
+*************** Item Audience: ;;;;stephen Visitors
+************ Item Name: UnderSubFolder.docx
+*************** Item Audience: ;;;;stephen Members
+************ Item Name: UnderSubFolder2.docx
+*************** Item Audience: ;;;;Excel Services Viewers
+ 
+********* List Title: Test
+************ Item Name: ViewerAudienceTitle
+*************** Item Audience: ;;;;Excel Services Viewers,stephen Members
+************ Item Name: TestTitle2
+*************** Item Audience: ;;;;stephen Owners
+ 
+********* List Title: TestFormLibrary
+************ Item Name: FormWorkd.docx
+*************** Item Audience: ;;;;Excel Services Viewers
+ 
+********* List Title: TestLibrary
+************ Item Name: WordTest.docx
+*************** Item Audience: ;;;;stephen Members
+************ Item Name: Excel.xlsx
+*************** Item Audience: ;;;;stephen Members
+ 
+********* List Title: TestList2
+************ Item Name: TestList2-Item1
+*************** Item Audience: ;;;;stephen Visitors
+************ Item Name: Item3
+*************** Item Audience: ;;;;stephen Members
+ 
+*** Running script on https://www27.kisp.com/erac1
+*** Running script on https://www27.kisp.com/qaDemo
+****** Web Site URL:https://www27.kisp.com/qaDemo/A-CUS8845
+********* List Title: Picture Gallery
+************ Item Name: ConferenceArea-AhrendMehes1-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Owner
+************ Item Name: ConferenceArea-Merge2-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_LimitedViewer
+************ Item Name: PrivateOffice-Align1-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Administrator
+************ Item Name: PrivateOffice-Terrace3-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Contributor
+************ Item Name: PrivateOffice-Terrace4-lg.jpg
+*************** Item Audience: ;;;;A-CUS8845_Viewer
+ 
+*** Running script on https://www27.kisp.com/qasp
+*** Running script on https://www27.kisp.com/share
+*** ALL DONE ***

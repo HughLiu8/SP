@@ -1,0 +1,12 @@
+$stream = [IO.File]::OpenRead("C:\WorkHLiu\GetAllUsers.txt")
+$stream.close()
+$stream.close()
+
+if($test -ne $null)
+{
+	$test.close()
+	
+}
+
+$test = [IO.File]::OpenRead("C:\WorkHLiu\GetAllUsers.txt")
+$test.close()

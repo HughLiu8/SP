@@ -1,0 +1,59 @@
+$ExcelDirectory = "C:\WorkHLiu\SharePoint\Script\DeleteUserTemplate\Excels"
+$OutPutDirectory = "C:\WorkHLiu\SharePoint\Script\DeleteUserTemplate\OutputScripts\"
+$TemplateScriptPath = "C:\WorkHLiu\SharePoint\Script\DeleteUserTemplate\TemplateScript.txt"
+
+$global:strArrUserIDS = ""
+
+$content = Get-Content $TemplateScriptPath
+Get-ChildItem $ExcelDirectory -Filter *.* | `
+Foreach-Object{
+	$global:strArrUserIDS = ""
+	$result = readExcel $_.FullName
+	$filename = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
+	$scriptpath = $OutPutDirectory + $filename + ".txt"
+	modifyScript $scriptpath $content
+}
+
+function readExcel($ExcelName)
+{
+	try
+	{
+		$xl = New-Object -COM "Excel.Application"
+		$xl.Visible = $true
+		$wb = $xl.Workbooks.Open($ExcelName)
+		$ws = $wb.Sheets.Item(1)
+
+		$rows = $ws.UsedRange.Rows.Count
+		$first = 1
+		for ($i=2; $i -le $rows; $i++){
+			if($first -ne 1)
+			{
+				$global:strArrUserIDS += ", "
+			}
+			$first = 0
+			
+			$v1 = $ws.Cells.Item($i, 1).text 
+			$global:strArrUserIDS += "'"
+			$global:strArrUserIDS += $v1
+			$global:strArrUserIDS += "'"
+		}
+		
+		$wb.Close()
+		$xl.Quit()
+		[System.Runtime.Interopservices.Marshal]::ReleaseComObject($xl)
+	}
+	catch
+	{
+		return 0
+	}
+	
+	return 1
+}
+
+function modifyScript($outputpath, $templateContent)
+{
+	New-Item $outputpath -type file -force
+	(Get-Content $TemplateScriptPath) -replace('@\(\)', $global:strArrUserIDS) | Set-Content $outputpath
+	
+}
+

@@ -1,0 +1,27 @@
+$WebAppURL = "https://www22.kisp.com"
+
+$SPweb = get-spwebapplication -identity $WebAppURL
+foreach ($SPSite in $SPweb.sites)
+{
+	$site = $SPSite.OpenWeb()
+	"site url" + $SPSite.url
+	"--web url"
+	foreach ($web in $SPSite.AllWebs) 
+	{
+		"--" + $web.url
+		
+		foreach($list in $web.lists)
+		{ 
+			if($list.BaseTemplate -eq "DocumentLibrary")
+			{
+				"----list title"
+				"    "+$list.title
+				"------item name"
+				foreach($item in $list.items)
+				{
+					"      " + $item.name
+				}		
+			}
+		}
+	}
+}

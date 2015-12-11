@@ -1,0 +1,15 @@
+$WebAppURL = "http://hector7:1111"
+$SPweb = get-spwebapplication -identity $WebAppURL
+foreach ($SPSite in $SPweb.sites)
+{
+
+	"site.url:" + $SPSite.url
+	foreach($web in $SPSite.AllWebs) 
+	{
+		"****** " + $web.url
+		"*********web.CustomMasterUrl: " + $web.CustomMasterUrl
+		"*********web.MasterUrl: " + $web.MasterUrl
+		"*********web.AlternateCssUrl: " + $web.AlternateCssUrl
+	}
+
+}

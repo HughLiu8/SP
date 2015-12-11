@@ -1,0 +1,8 @@
+function TestReturnValue()
+{
+	return 333
+}
+
+$result = TestReturnValue
+$result = $result + 1
+"result:" + $result

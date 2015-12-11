@@ -1,0 +1,13 @@
+
+
+Get-ChildItem -Path C:\WorkHLiu\SharePoint\Script\MakeBuild\TestRar\Output -Recurse -exclude *.txt |
+Remove-Item –Force -Recurse
+
+if((Test-Path "C:\WorkHLiu\SharePoint\Script\MakeBuild\TestRar\1\2") -eq $false)
+{
+	New-Item -path "C:\WorkHLiu\SharePoint\Script\MakeBuild\TestRar\1\2" -type directory
+}
+
+
+Move-Item "C:\WorkHLiu\SharePoint\Script\MakeBuild\TestMove\From\*.*" "C:\WorkHLiu\SharePoint\Script\MakeBuild\TestMove\To" -force
+

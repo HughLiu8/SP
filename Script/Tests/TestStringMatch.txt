@@ -1,0 +1,20 @@
+if("tTest" -like "*test")
+{
+	"1"
+}
+else
+{
+	"0"
+}
+
+$name = "HGST_HGST"
+$name2 = "hgst_hgst"
+
+if($name -eq $name2)
+{
+	"1"
+}
+else
+{
+	"0"
+}

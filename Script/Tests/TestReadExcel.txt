@@ -1,0 +1,58 @@
+$ExcelName = "C:\WorkHLiu\SharePoint\Script\DeleteUsersExceptExcel\MOSAIC Migration User Listing to KEEP - Halliburton.xlsx"
+
+
+$global:arrUserIDs = @()
+$global:arrUserNames = @()
+
+function GetExceptUsers($ExcelName)
+{
+	try
+	{
+		if (Test-Path $ExcelName){
+		  
+		}Else{
+		  return 0
+		}
+
+		$xl = New-Object -COM "Excel.Application"
+		$xl.Visible = $true
+		$wb = $xl.Workbooks.Open($ExcelName)
+		$ws = $wb.Sheets.Item(1)
+
+		$rows = $ws.UsedRange.Rows.Count
+
+		for ($i=2; $i -le $rows; $i++){
+		
+			$v1 = $ws.Cells.Item($i, 1).text 
+			$global:arrUserIDs += $v1
+			$v2 = $ws.Cells.Item($i, 2).text 
+			$global:arrUserNames += $v2
+		}
+		$wb.Close()
+		$xl.Quit()
+		[System.Runtime.Interopservices.Marshal]::ReleaseComObject($xl)
+	}
+	catch
+	{
+		return 0
+	}
+	
+	return 1
+}
+
+GetExceptUsers $ExcelName
+
+
+
+foreach($userID in $arrUserIDs)
+{
+	"userID:" + $userID
+}
+
+foreach($userName in $arrUserNames)
+{
+	"arrUserNames:" + $arrUserNames
+}
+
+
+

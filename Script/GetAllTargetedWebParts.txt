@@ -1,0 +1,97 @@
+$WebAppURL = "https://www22.kisp.com/"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+$global:display = 0
+function DisplayAudience($webpart, $fileUrl, $pageshowed)
+{
+	#"----WebPartTitle:" + $webpart.title
+	$AudienceLength = $webpart.AuthorizationFilter.length
+	if($AudienceLength -gt 0)
+	{
+		if(0 -eq $pageshowed)
+		{
+			"****** Page URL:" + $fileUrl
+		}
+		
+		"********* Web Part:" + $webpart.title
+		"************ Audience:" + $webpart.AuthorizationFilter 
+		$global:display = 1
+	}
+	else
+	{
+		#"    No Audiences"
+	}
+}
+
+foreach ($SPSite in $SPweb.sites)
+{
+	$site = $SPSite.OpenWeb()
+	foreach($web in $SPSite.AllWebs) 
+	{
+        if ([Microsoft.SharePoint.Publishing.PublishingWeb]::IsPublishingWeb($web)) {
+            $pWeb = [Microsoft.SharePoint.Publishing.PublishingWeb]::GetPublishingWeb($web)
+            $pages = $pWeb.PagesList
+              
+            #"****** Processing Publishing Web:" + $pWeb.Url
+                                   
+            foreach ($item in $pages.Items) {
+                $fileUrl = $webUrl + "/" + $item.File.Url
+                #"PageUrl:" + $fileUrl      
+                $manager = $item.file.GetLimitedWebPartManager([System.Web.UI.WebControls.Webparts.PersonalizationScope]::Shared);
+                $wps = $manager.webparts
+				$pageshowed = 0
+				$global:display = 0
+				foreach($webpart in $wps)
+				{
+					DisplayAudience $webpart $fileUrl $pageshowed
+					if(1 -eq $global:display)
+					{
+						$pageshowed = 1
+					}
+				}
+
+				if(1 -eq $pageshowed)
+				{
+					" "
+				}
+                #$wps | select-object @{Expression={$pWeb.Url};Label="Web URL"},@{Expression={$fileUrl};Label="Page URL"}, DisplayTitle, IsVisible, @{Expression={$_.GetType().ToString()};Label="Type"}                
+            }            
+        }
+        else {
+            #"   Not a publishing web:" + $web.Url + ". Looking for Site Pages library."
+            $pages = $null
+            $pages = $web.Lists["Site Pages"]
+            
+            if ($pages) {
+				#"****** Processing Web of Site Pages library:" + $pWeb.Url
+                #"   " + $pages.Title + "found."
+                
+                foreach ($item in $pages.Items) {
+                    $fileUrl = $webUrl + "/" + $item.File.Url
+                    $manager = $item.file.GetLimitedWebPartManager([System.Web.UI.WebControls.Webparts.PersonalizationScope]::Shared);
+                    $wps = $manager.webparts
+					$pageshowed = 0
+					$global:display = 0
+					foreach($webpart in $wps)
+					{
+						DisplayAudience $webpart $fileUrl $pageshowed
+						if(1 -eq $global:display)
+						{
+							$pageshowed = 1
+						}
+					}
+
+					if(1 -eq $pageshowed)
+					{
+						" "
+					}
+                    #$wps | select-object @{Expression={$pWeb.Url};Label="Web URL"},@{Expression={$fileUrl};Label="Page URL"}, DisplayTitle, IsVisible, @{Expression={$_.GetType().ToString()};Label="Type"}
+                }                
+            }
+            else {
+               "    Site Pages library not found."               
+            }            
+        }
+	}
+}
+

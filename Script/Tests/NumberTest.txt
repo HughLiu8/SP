@@ -1,0 +1,9 @@
+$Number = 001
+if($Number -eq 2)
+{
+	"yes:" + $Number
+}
+else
+{
+	"no: " + $Number
+}

@@ -1,0 +1,158 @@
+$WebAppURL = "https://www22.kisp.com/"
+$SPweb = get-spwebapplication -identity $WebAppURL
+$WebUrlSpecified = "https://www22.kisp.com/SnapTrackerWeb"
+
+$global:pageshowed = 0
+$global:webshowed = 0
+$global:listshowed = 0
+
+function DisplayWebURL($weburl)
+{
+	if(0 -eq $global:webshowed)
+	{
+		"****** Web Site URL:" + $weburl
+		$global:webshowed = 1
+	}
+}
+
+function DisplayAudience($webpart, $fileUrl, $weburl)
+{
+	#"----WebPartTitle: " + $webpart.title
+	$AudienceLength = $webpart.AuthorizationFilter.length
+	if($AudienceLength -gt 0)
+	{
+		DisplayWebURL($weburl)
+
+		if(0 -eq $global:pageshowed)
+		{
+			"********* Page URL: " + $fileUrl
+			$global:pageshowed = 1
+		}
+		
+		"************ Web Part: " + $webpart.title
+		"*************** Audience: " + $webpart.AuthorizationFilter 
+		
+	}
+	else
+	{
+		#"    No Audiences"
+	}
+}
+
+function DisplayItemsAudience($items)
+{
+		foreach($item in $items) 
+		{ 
+			$strAudience = $item["Target Audiences"]
+			"Item Name: " + $item.name + "strAudience: " + $strAudience
+			if($strAudience.length -gt 0)
+			{
+				DisplayWebURL $web.url
+				if(0 -eq $global:listshowed)
+				{
+					"********* List Title: " + $list.title
+					$global:listshowed = 1
+				}
+
+				"************ Item Name: " + $item.name
+				"*************** Item Audience: " +  $strAudience
+					
+			}
+		} 
+}
+
+function DisplayContentAudience($web)
+{
+	foreach($list in $web.lists)
+	{ 
+		$global:listshowed = 0
+		$listItemsCollection = $list.GetItems();
+		"list title: " + $list.title + "Items Count: " + $listItemsCollection.count + "folders count: " + $list.folders.count
+
+		DisplayItemsAudience($listItemsCollection);
+		DisplayItemsAudience($list.folders);
+
+		if(1 -eq $global:listshowed)
+		{
+			" "
+		}
+	}
+}
+
+foreach ($SPSite in $SPweb.sites)
+{
+	$runned = 0
+	foreach($web in $SPSite.AllWebs) 
+	{
+		if($web.url -eq $WebUrlSpecified)
+		{
+			$runned = 1
+		}
+		$webshowed = 0
+		$weburl = $web.url
+		#"weburl:" + $weburl
+		$global:webshowed = 0
+        if ([Microsoft.SharePoint.Publishing.PublishingWeb]::IsPublishingWeb($web)) {
+            $pWeb = [Microsoft.SharePoint.Publishing.PublishingWeb]::GetPublishingWeb($web)
+            $pages = $pWeb.PagesList
+              
+            #"****** Processing Publishing Web: " + $pWeb.Url
+                                   
+            foreach ($item in $pages.Items) {
+                $fileUrl = $webUrl + "/" + $item.File.Url
+                #"PageUrl: " + $fileUrl      
+                $manager = $item.file.GetLimitedWebPartManager([System.Web.UI.WebControls.Webparts.PersonalizationScope]::Shared);
+                $wps = $manager.webparts
+				$global:pageshowed = 0
+				foreach($webpart in $wps)
+				{
+					DisplayAudience $webpart $fileUrl $weburl
+				}
+
+				if(1 -eq $global:pageshowed)
+				{
+					" "
+				}
+                #$wps | select-object @{Expression={$pWeb.Url};Label="Web URL"},@{Expression={$fileUrl};Label="Page URL"}, DisplayTitle, IsVisible, @{Expression={$_.GetType().ToString()};Label="Type"}                
+            }            
+        }
+        else {
+            #"   Not a publishing web: " + $web.Url + ". Looking for Site Pages library."
+            $pages = $null
+            $pages = $web.Lists["Site Pages"]
+            
+            if ($pages) {
+				#"****** Processing Web of Site Pages library: " + $pWeb.Url
+                #"   " + $pages.Title + "found."
+                
+                foreach ($item in $pages.Items) {
+                    $fileUrl = $webUrl + "/" + $item.File.Url
+                    $manager = $item.file.GetLimitedWebPartManager([System.Web.UI.WebControls.Webparts.PersonalizationScope]::Shared);
+                    $wps = $manager.webparts
+					$global:pageshowed = 0
+					foreach($webpart in $wps)
+					{
+						DisplayAudience $webpart $fileUrl $weburl
+					}
+
+					if(1 -eq $global:pageshowed)
+					{
+						" "
+					}
+                    #$wps | select-object @{Expression={$pWeb.Url};Label="Web URL"},@{Expression={$fileUrl};Label="Page URL"}, DisplayTitle, IsVisible, @{Expression={$_.GetType().ToString()};Label="Type"}
+                }                
+            }
+            else {
+               "    Site Pages library not found."               
+            }            
+        }
+
+		DisplayContentAudience $web
+	}
+
+	if($runned -eq 1)
+	{
+		break
+	}
+}
+

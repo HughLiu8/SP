@@ -1,0 +1,2399 @@
+PS C:\Users\sp_dev> $sitecollection = "http://hector7:55555/hgst"
+PS C:\Users\sp_dev>
+PS C:\Users\sp_dev> $SPSite = Get-SPSite -Identity $sitecollection
+PS C:\Users\sp_dev> $SPSite.url + "---SPSite Begin"
+http://hector7:55555/hgst---SPSite Begin
+PS C:\Users\sp_dev> $site = $SPSite.OpenWeb()
+PS C:\Users\sp_dev> $groups = $site.sitegroups
+PS C:\Users\sp_dev> foreach ($grp in $groups)
+>> {
+>> $count = $grp.users.count;
+>> $groupName = $grp.name
+>> "--Group:" + $groupName
+>>
+>> if($count -gt 0)
+>> {
+>> "----Users"
+>> foreach ($user in $grp.users)
+>> {
+>> $name = $user.loginname
+>> #$name = $name.SubString($name.LastIndexOf("|") + 1, $name.length - $name.LastIndexOf("|") - 1)
+>> "    " + $user.name + ", " + $name
+>> }
+>> }
+>> else
+>> {
+>> "----No Users"
+>> }
+>> "    "
+>> }
+>>
+--Group:3M Members
+----No Users
+
+--Group:3M Owners
+----No Users
+
+--Group:3M Visitors
+----No Users
+
+--Group:AAFES Members
+----No Users
+
+--Group:AAFES Owners
+----No Users
+
+--Group:AAFES Visitors
+----No Users
+
+--Group:ABS Members
+----No Users
+
+--Group:ABS Owners
+----No Users
+
+--Group:ABS Visitors
+----No Users
+
+--Group:ABT Members
+----No Users
+
+--Group:ABT Owners
+----No Users
+
+--Group:ABT Visitors
+----No Users
+
+--Group:Access Medical Purchasing Members
+----No Users
+
+--Group:Access Medical Purchasing Owners
+----No Users
+
+--Group:Access Medical Purchasing Visitors
+----No Users
+
+--Group:ADT Members
+----No Users
+
+--Group:ADT Owners
+----No Users
+
+--Group:ADT Visitors
+----No Users
+
+--Group:Agero Members
+----No Users
+
+--Group:Agero Owners
+----No Users
+
+--Group:Agero Visitors
+----No Users
+
+--Group:AgriBank Members
+----No Users
+
+--Group:AgriBank Owners
+----No Users
+
+--Group:AgriBank Visitors
+----No Users
+
+--Group:AIMIA Members
+----No Users
+
+--Group:AIMIA Owners
+----No Users
+
+--Group:AIMIA Visitors
+----No Users
+
+--Group:Air Canada Members
+----No Users
+
+--Group:Air Canada Owners
+----No Users
+
+--Group:Air Canada Visitors
+----No Users
+
+--Group:Allegis Group Members
+----No Users
+
+--Group:Allegis Group Owners
+----No Users
+
+--Group:Allegis Group Visitors
+----No Users
+
+--Group:Amcor Members
+----No Users
+
+--Group:Amcor Owners
+----No Users
+
+--Group:Amcor Visitors
+----No Users
+
+--Group:American Academy of Neurology Members
+----No Users
+
+--Group:American Academy of Neurology Owners
+----No Users
+
+--Group:American Academy of Neurology Visitors
+----No Users
+
+--Group:American Honda Members
+----No Users
+
+--Group:American Honda Owners
+----No Users
+
+--Group:American Honda Visitors
+----No Users
+
+--Group:Amerigroup Members
+----No Users
+
+--Group:Amerigroup Owners
+----No Users
+
+--Group:Amerigroup Visitors
+----No Users
+
+--Group:Approvers
+----No Users
+
+--Group:APtest Members
+----No Users
+
+--Group:APtest Owners
+----No Users
+
+--Group:APtest Visitors
+----No Users
+
+--Group:Arizona State Members
+----No Users
+
+--Group:Arizona State Owners
+----No Users
+
+--Group:Arizona State Visitors
+----No Users
+
+--Group:Army Members
+----No Users
+
+--Group:Army Owners
+----No Users
+
+--Group:athenahealth Members
+----No Users
+
+--Group:athenahealth Owners
+----No Users
+
+--Group:athenahealth Visitors
+----No Users
+
+--Group:ATK Members
+----No Users
+
+--Group:ATK Owners
+----No Users
+
+--Group:ATK Visitors
+----No Users
+
+--Group:Atlanta VA Medical Center Members
+----No Users
+
+--Group:Atlanta VA Medical Center Owners
+----No Users
+
+--Group:Atlanta VA Medical Center Visitors
+----No Users
+
+--Group:Auto Club Group Members
+----No Users
+
+--Group:Auto Club Group Owners
+----No Users
+
+--Group:Auto Club Group Visitors
+----No Users
+
+--Group:Avis Budget Group Members
+----No Users
+
+--Group:Avis Budget Group Owners
+----No Users
+
+--Group:Avis Budget Group Visitors
+----No Users
+
+--Group:AWAC Members
+----No Users
+
+--Group:AWAC Owners
+----No Users
+
+--Group:Axalta Members
+----No Users
+
+--Group:Axalta Owners
+----No Users
+
+--Group:Axalta Visitors
+----No Users
+
+--Group:Bank Midwest Members
+----No Users
+
+--Group:Bank Midwest Owners
+----No Users
+
+--Group:Bank Midwest Visitors
+----No Users
+
+--Group:Baylor Members
+----No Users
+
+--Group:Baylor Owners
+----No Users
+
+--Group:Baylor Visitors
+----No Users
+
+--Group:BBVA Compass Members
+----No Users
+
+--Group:BBVA Compass Owners
+----No Users
+
+--Group:BBVA Compass Visitors
+----No Users
+
+--Group:BE Aerospace Members
+----No Users
+
+--Group:BE Aerospace Owners
+----No Users
+
+--Group:BE Aerospace Visitors
+----No Users
+
+--Group:Beaumont Members
+----No Users
+
+--Group:Beaumont Owners
+----No Users
+
+--Group:Beaumont Visitors
+----No Users
+
+--Group:Beckman Members
+----No Users
+
+--Group:Beckman Owners
+----No Users
+
+--Group:Beckman Visitors
+----No Users
+
+--Group:Berkadia Members
+----No Users
+
+--Group:Berkadia Owners
+----No Users
+
+--Group:Berkadia Visitors
+----No Users
+
+--Group:BJC Members
+----No Users
+
+--Group:BJC Owners
+----No Users
+
+--Group:BJC Visitors
+----No Users
+
+--Group:Boston Members
+----No Users
+
+--Group:Boston Owners
+----No Users
+
+--Group:Boston Visitors
+----No Users
+
+--Group:BOW Members
+----No Users
+
+--Group:BOW Owners
+----No Users
+
+--Group:BOW Visitors
+----No Users
+
+--Group:BP Members
+----No Users
+
+--Group:BP Owners
+----No Users
+
+--Group:BP Visitors
+----No Users
+
+--Group:brent Members
+----No Users
+
+--Group:brent Owners
+----No Users
+
+--Group:brent Visitors
+----No Users
+
+--Group:Brookfield Properties Members
+----No Users
+
+--Group:Brookfield Properties Owners
+----No Users
+
+--Group:Brookfield Properties Visitors
+----No Users
+
+--Group:Cazador Members
+----No Users
+
+--Group:Cazador Owners
+----No Users
+
+--Group:Cazador Visitors
+----No Users
+
+--Group:centene Members
+----No Users
+
+--Group:centene Owners
+----No Users
+
+--Group:centene Visitors
+----No Users
+
+--Group:Cequel III Memebers
+----No Users
+
+--Group:Cequel III Owners
+----No Users
+
+--Group:Cequel III Visitors
+----No Users
+
+--Group:CGI Members
+----No Users
+
+--Group:CGI Owners
+----No Users
+
+--Group:CGI Visitors
+----No Users
+
+--Group:CH2MHILL Members
+----No Users
+
+--Group:CH2MHILL Owners
+----No Users
+
+--Group:CH2MHILL Visitors
+----No Users
+
+--Group:CHP Members
+----No Users
+
+--Group:CHP Owners
+----No Users
+
+--Group:CHP Visitors
+----No Users
+
+--Group:Cincinnati Children_s Hospital Members
+----No Users
+
+--Group:Cincinnati Children_s Hospital Owners
+----No Users
+
+--Group:Cincinnati Children_s Hospital Visitors
+----No Users
+
+--Group:City of Atlanta Members
+----No Users
+
+--Group:City of Atlanta Owners
+----No Users
+
+--Group:City of Atlanta Visitors
+----No Users
+
+--Group:Clark County Members
+----No Users
+
+--Group:Clark County Owners
+----No Users
+
+--Group:Clark County Visitors
+----No Users
+
+--Group:CMU Members
+----No Users
+
+--Group:CMU Owners
+----No Users
+
+--Group:CMU Visitors
+----No Users
+
+--Group:Community Members
+----No Users
+
+--Group:Community Mercy Members
+----No Users
+
+--Group:Community Mercy Owners
+----No Users
+
+--Group:Community Mercy Visitors
+----No Users
+
+--Group:Community Owners
+----No Users
+
+--Group:Community Visitors
+----No Users
+
+--Group:Corizon Health Members
+----No Users
+
+--Group:Corizon Health Owners
+----No Users
+
+--Group:Corizon Health Visitors
+----No Users
+
+--Group:Cornerstone Members
+----No Users
+
+--Group:Cornerstone Owners
+----No Users
+
+--Group:Cornerstone Visitors
+----No Users
+
+--Group:Creative Studio Demo Members
+----No Users
+
+--Group:Creative Studio Demo Owners
+----No Users
+
+--Group:Creative Studio Demo Visitors
+----No Users
+
+--Group:CSC Members
+----No Users
+
+--Group:CSC Owners
+----No Users
+
+--Group:CSC Visitors
+----No Users
+
+--Group:Customs and Border Protection Members
+----No Users
+
+--Group:Customs and Border Protection Owners
+----No Users
+
+--Group:Customs and Border Protection Visitors
+----No Users
+
+--Group:Cuyahoga County Members
+----No Users
+
+--Group:Cuyahoga County Owners
+----No Users
+
+--Group:Cuyahoga County Visitors
+----No Users
+
+--Group:david Members
+----No Users
+
+--Group:david Owners
+----No Users
+
+--Group:david Visitors
+----No Users
+
+--Group:davis Members
+----No Users
+
+--Group:davis Owners
+----No Users
+
+--Group:davis Visitors
+----No Users
+
+--Group:DCH Members
+----No Users
+
+--Group:DCH Owners
+----No Users
+
+--Group:DCH Visitors
+----No Users
+
+--Group:Dealer_Contacts
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+    system, i:0#.f|fbamembershipprovider|system
+
+--Group:Dealer_Gallery
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+
+--Group:Dealer_Library
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+    system, i:0#.f|fbamembershipprovider|system
+
+--Group:Dealer_ProductStandards
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+    system, i:0#.f|fbamembershipprovider|system
+
+--Group:D.E.A Members
+----No Users
+
+--Group:D.E.A Owners
+----No Users
+
+--Group:D.E.A Visitors
+----No Users
+
+--Group:Demo Five Members
+----No Users
+
+--Group:Demo Five Owners
+----No Users
+
+--Group:Demo Five Visitors
+----No Users
+
+--Group:Demo Four Members
+----No Users
+
+--Group:Demo Four Owners
+----No Users
+
+--Group:Demo Four Visitors
+----No Users
+
+--Group:Demo Mosaic Four Members
+----No Users
+
+--Group:Demo Mosaic Four Owners
+----No Users
+
+--Group:Demo Mosaic Four Visitors
+----No Users
+
+--Group:Demo Mosaic One Members
+----No Users
+
+--Group:Demo Mosaic One Owners
+----No Users
+
+--Group:Demo Mosaic One Visitors
+----No Users
+
+--Group:Demo Mosaic Three Members
+----No Users
+
+--Group:Demo Mosaic Three Owners
+----No Users
+
+--Group:Demo Mosaic Three Visitors
+----No Users
+
+--Group:Demo Mosaic Two Members
+----No Users
+
+--Group:Demo Mosaic Two Owners
+----No Users
+
+--Group:Demo Mosaic Two Visitors
+----No Users
+
+--Group:Demo One Members
+----No Users
+
+--Group:Demo One Owners
+----No Users
+
+--Group:Demo One Visitors
+----No Users
+
+--Group:Demo Three Members
+----No Users
+
+--Group:Demo Three Owners
+----No Users
+
+--Group:Demo Three Visitors
+----No Users
+
+--Group:Department of Labor Members
+----No Users
+
+--Group:Department of Labor Owners
+----No Users
+
+--Group:Department of Labor Visitors
+----No Users
+
+--Group:Design
+----No Users
+
+--Group:Designers
+----Users
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+
+--Group:Dignity Members
+----No Users
+
+--Group:Dignity Owners
+----No Users
+
+--Group:Dignity Visitors
+----No Users
+
+--Group:Dolby Members
+----No Users
+
+--Group:Dolby Owners
+----No Users
+
+--Group:Dolby Visitors
+----No Users
+
+--Group:Dow Members
+----No Users
+
+--Group:DST Members
+----No Users
+
+--Group:DST Owners
+----No Users
+
+--Group:DST Visitors
+----No Users
+
+--Group:DuPont Members
+----No Users
+
+--Group:DuPont Owners
+----No Users
+
+--Group:DuPont Visitors
+----No Users
+
+--Group:Elbit Members
+----No Users
+
+--Group:Elbit Owners
+----No Users
+
+--Group:Elbit Visitors
+----No Users
+
+--Group:EnCana Members
+----No Users
+
+--Group:EnCana Owners
+----No Users
+
+--Group:EnCana Visitors
+----No Users
+
+--Group:ERAC CORP Members
+----No Users
+
+--Group:ERAC CORP Owners
+----No Users
+
+--Group:ERAC CORP Visitors
+----No Users
+
+--Group:ERAC Members
+----No Users
+
+--Group:ERAC Owners
+----No Users
+
+--Group:ERAC Visitors
+----No Users
+
+--Group:Ernst & Young Members
+----No Users
+
+--Group:Ernst & Young Owners
+----No Users
+
+--Group:Ernst & Young Visitors
+----No Users
+
+--Group:eTools Members
+----No Users
+
+--Group:eTools Owners
+----No Users
+
+--Group:eTools Visitors
+----No Users
+
+--Group:Eugene Members
+----No Users
+
+--Group:Eugene Owners
+----No Users
+
+--Group:Eugene Visitors
+----No Users
+
+--Group:EXAMPLE Members
+----No Users
+
+--Group:EXAMPLE Owners
+----No Users
+
+--Group:EXAMPLE Visitors
+----No Users
+
+--Group:Express Scripts Members
+----No Users
+
+--Group:Express Scripts Owners
+----No Users
+
+--Group:Express Scripts Visitors
+----No Users
+
+--Group:Family Dollar Members
+----No Users
+
+--Group:Family Dollar Owners
+----No Users
+
+--Group:Family Dollar Visitors
+----No Users
+
+--Group:Federal Reserve Board Members
+----No Users
+
+--Group:Federal Reserve Board Owners
+----No Users
+
+--Group:Federal Reserve Board Visitors
+----No Users
+
+--Group:ferro Members
+----No Users
+
+--Group:ferro Owners
+----No Users
+
+--Group:ferro Visitors
+----No Users
+
+--Group:Fluid Members
+----No Users
+
+--Group:Fluid Owners
+----No Users
+
+--Group:Fluid Visitors
+----No Users
+
+--Group:Foth Members
+----No Users
+
+--Group:Foth Owners
+----No Users
+
+--Group:Foth Visitors
+----No Users
+
+--Group:GAI Members
+----No Users
+
+--Group:GAI Owners
+----No Users
+
+--Group:GAI Visitors
+----No Users
+
+--Group:Gartner Members
+----No Users
+
+--Group:Gartner Owners
+----No Users
+
+--Group:Gartner Visitors
+----No Users
+
+--Group:Geico Members
+----No Users
+
+--Group:Geico Owners
+----No Users
+
+--Group:Geico Visitors
+----No Users
+
+--Group:GE Members
+----No Users
+
+--Group:Genband Members
+----No Users
+
+--Group:Genband Owners
+----No Users
+
+--Group:Genband Visitors
+----No Users
+
+--Group:General Mills Members
+----No Users
+
+--Group:General Mills Owners
+----No Users
+
+--Group:General Mills Visitors
+----No Users
+
+--Group:GE Owners
+----No Users
+
+--Group:GE Visitors
+----No Users
+
+--Group:GFS Members
+----No Users
+
+--Group:GFS Owners
+----No Users
+
+--Group:GFS Visitors
+----No Users
+
+--Group:gizmo Members
+----No Users
+
+--Group:gizmo Owners
+----No Users
+
+--Group:gizmo Visitors
+----No Users
+
+--Group:Google Members
+----No Users
+
+--Group:Google Owners
+----No Users
+
+--Group:Google Visitors
+----No Users
+
+--Group:Graphic Packaging_ Inc. Members
+----No Users
+
+--Group:Graphic Packaging_ Inc. Owners
+----No Users
+
+--Group:Graphic Packaging_ Inc. Visitors
+----No Users
+
+--Group:GSA Mobility Members
+----No Users
+
+--Group:GSA Mobility Owners
+----No Users
+
+--Group:GSA Mobility Visitors
+----No Users
+
+--Group:Guardian Members
+----No Users
+
+--Group:Guardian Owners
+----No Users
+
+--Group:Guardian Visitors
+----No Users
+
+--Group:Hahnloeser Members
+----No Users
+
+--Group:Hahnloeser Owners
+----No Users
+
+--Group:Hahnloeser Visitors
+----No Users
+
+--Group:Haliburton Members
+----No Users
+
+--Group:Haliburton Owners
+----No Users
+
+--Group:Haliburton Visitors
+----No Users
+
+--Group:Halliburton Members
+----No Users
+
+--Group:Halliburton Owners
+----No Users
+
+--Group:Halliburton Visitors
+----No Users
+
+--Group:Haworth_Admins
+----Users
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+    system, i:0#.f|fbamembershipprovider|system
+
+--Group:Haworth_Password
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+    System Account, SHAREPOINT\system
+
+--Group:Haworth_Reports
+----No Users
+
+--Group:Haworth_Shopping
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+    system, i:0#.f|fbamembershipprovider|system
+
+--Group:Henkel International Members
+----No Users
+
+--Group:Henkel International Owners
+----No Users
+
+--Group:Henkel International Visitors
+----No Users
+
+--Group:hgst_Administrator
+----Users
+    hgst_mosaic, i:0#.f|fbamembershipprovider|hgst_mosaic
+
+--Group:hgst_Contributor
+----No Users
+
+--Group:hgst_LimitedViewer
+----No Users
+
+--Group:HGST Members
+----No Users
+
+--Group:hgst_Owner
+----Users
+    hgst_SYSTEM, i:0#.f|fbamembershipprovider|hgst_system
+
+--Group:HGST Owners
+----Users
+    system, i:0#.f|fbamembershipprovider|system
+
+--Group:hgst_Viewer
+----Users
+    hgst_hgst, i:0#.f|fbamembershipprovider|hgst_hgst
+
+--Group:HGST Visitors
+----No Users
+
+--Group:HHE Members
+----No Users
+
+--Group:HHE Owners
+----No Users
+
+--Group:HHE Visitors
+----No Users
+
+--Group:Hierarchy Managers
+----No Users
+
+--Group:Highmark PSPC Members
+----No Users
+
+--Group:Highmark PSPC Owners
+----No Users
+
+--Group:Highmark PSPC Visitors
+----No Users
+
+--Group:Homeland Security Members
+----No Users
+
+--Group:Homeland Security Owners
+----No Users
+
+--Group:Homeland Security Visitors
+----No Users
+
+--Group:HondaEMall Members
+----No Users
+
+--Group:HondaEMall Owners
+----No Users
+
+--Group:HondaEMall Visitors
+----No Users
+
+--Group:HondaHQ Members
+----No Users
+
+--Group:HondaHQ Owners
+----No Users
+
+--Group:HondaHQ Visitors
+----No Users
+
+--Group:Hope College Members
+----No Users
+
+--Group:Hope College Owners
+----No Users
+
+--Group:Hope College Visitors
+----No Users
+
+--Group:HSBC Members
+----No Users
+
+--Group:HSBC Owners
+----No Users
+
+--Group:HSBC Visitors
+----No Users
+
+--Group:Humility of Mary Members
+----No Users
+
+--Group:Humility of Mary Owners
+----No Users
+
+--Group:Humility of Mary Visitors
+----No Users
+
+--Group:I3 Members
+----No Users
+
+--Group:I3 Owners
+----No Users
+
+--Group:I3 Visitors
+----No Users
+
+--Group:ICE_BPA Members
+----No Users
+
+--Group:ICE_BPA Owners
+----No Users
+
+--Group:ICE_BPA Visitors
+----No Users
+
+--Group:ICE Members
+----No Users
+
+--Group:ICE Owners
+----No Users
+
+--Group:ICE Visitors
+----No Users
+
+--Group:IMMSS Members
+----No Users
+
+--Group:IMMSS Owners
+----No Users
+
+--Group:IMMSS Visitors
+----No Users
+
+--Group:Ingersoll Rand Members
+----No Users
+
+--Group:Ingersoll Rand Owners
+----No Users
+
+--Group:Ingersoll Rand Visitors
+----No Users
+
+--Group:INMAR Members
+----No Users
+
+--Group:INMAR Owners
+----No Users
+
+--Group:INMAR Visitors
+----No Users
+
+--Group:Integrated Interiors International Members
+----No Users
+
+--Group:Integrated Interiors International Owners
+----No Users
+
+--Group:Integrated Interiors International Visitors
+----No Users
+
+--Group:Internap Members
+----No Users
+
+--Group:Internap Owners
+----No Users
+
+--Group:Internap Visitors
+----No Users
+
+--Group:IPHEC Members
+----No Users
+
+--Group:IPHEC Owners
+----No Users
+
+--Group:IPHEC Visitors
+----No Users
+
+--Group:IRS Members
+----No Users
+
+--Group:IRS Owners
+----No Users
+
+--Group:IRS Visitors
+----No Users
+
+--Group:KAFD Members
+----No Users
+
+--Group:KAFD Owners
+----No Users
+
+--Group:KAFD Visitors
+----No Users
+
+--Group:Key Bank Members
+----No Users
+
+--Group:Key Bank Owners
+----No Users
+
+--Group:Key Bank Visitors
+----No Users
+
+--Group:Kisp Members
+----No Users
+
+--Group:Kisp Owners
+----No Users
+
+--Group:Kisp Visitors
+----No Users
+
+--Group:Laclede Members
+----No Users
+
+--Group:Laclede Owners
+----No Users
+
+--Group:Laclede Visitors
+----No Users
+
+--Group:Lay-Z-Boy Owners
+----No Users
+
+--Group:La-Z-Boy Members
+----No Users
+
+--Group:La-Z-Boy Visitors
+----No Users
+
+--Group:LDS Members
+----No Users
+
+--Group:LDS Owners
+----No Users
+
+--Group:LDS Visitors
+----No Users
+
+--Group:LG Chem Members
+----No Users
+
+--Group:LG Chem Owners
+----No Users
+
+--Group:LG Chem Visitors
+----No Users
+
+--Group:Liberty Mutual Members
+----No Users
+
+--Group:Liberty Mutual Owners
+----No Users
+
+--Group:Liberty Mutual Visitors
+----No Users
+
+--Group:Life Technologies Members
+----No Users
+
+--Group:Life Technologies Owners
+----No Users
+
+--Group:Life Technologies Visitors
+----No Users
+
+--Group:Lifetime Members
+----No Users
+
+--Group:Lifetime Owners
+----No Users
+
+--Group:Lifetime Visitors
+----No Users
+
+--Group:Lithia Members
+----No Users
+
+--Group:Lithia Owners
+----No Users
+
+--Group:Lithia Visitors
+----No Users
+
+--Group:Lockheed Martin Members
+----No Users
+
+--Group:Lockheed Martin Owners
+----No Users
+
+--Group:Lockheed Martin Visitors
+----No Users
+
+--Group:Louisville Members
+----No Users
+
+--Group:Louisville Owners
+----No Users
+
+--Group:Louisville Visitors
+----No Users
+
+--Group:Loyal 3 Members
+----No Users
+
+--Group:Loyal 3 Owners
+----No Users
+
+--Group:Loyal 3 Visitors
+----No Users
+
+--Group:MacDill Members
+----No Users
+
+--Group:MacDill Owners
+----No Users
+
+--Group:MacDill Visitors
+----No Users
+
+--Group:Managment
+----No Users
+
+--Group:Marci Training Members
+----No Users
+
+--Group:Marci Training Owners
+----No Users
+
+--Group:Marci Training Visitors
+----No Users
+
+--Group:Marriott International Members
+----No Users
+
+--Group:Marriott International Owners
+----No Users
+
+--Group:Marriott International Visitors
+----No Users
+
+--Group:matt Members
+----No Users
+
+--Group:matt Owners
+----No Users
+
+--Group:matt Visitors
+----No Users
+
+--Group:Mazda Retail Evaluation Members
+----No Users
+
+--Group:Mazda Retail Evaluation Owners
+----No Users
+
+--Group:Mazda Retail Evaluation Visitors
+----No Users
+
+--Group:McKinna Law Members
+----No Users
+
+--Group:McKinna Law Owners
+----No Users
+
+--Group:McKinna Law Visitors
+----No Users
+
+--Group:Media Consotium Members
+----No Users
+
+--Group:Media Consotium Owners
+----No Users
+
+--Group:Media Consotium Visitors
+----No Users
+
+--Group:Medtronic Members
+----No Users
+
+--Group:Medtronic Owners
+----No Users
+
+--Group:Medtronic Visitors
+----No Users
+
+--Group:Members
+----No Users
+
+--Group:MEMC Members
+----No Users
+
+--Group:MEMC Owners
+----No Users
+
+--Group:MEMC Visitors
+----No Users
+
+--Group:Mercy Health Partners - Kentucky Members
+----No Users
+
+--Group:Mercy Health Partners - Kentucky Owners
+----No Users
+
+--Group:Mercy Health Partners - Kentucky Visitors
+----No Users
+
+--Group:Mercy Members
+----No Users
+
+--Group:Mercy Owners
+----No Users
+
+--Group:Mercy South West Ohio Members
+----No Users
+
+--Group:Mercy South West Ohio Owners
+----No Users
+
+--Group:Mercy South West Ohio Visitors
+----No Users
+
+--Group:Mercy Visitors
+----No Users
+
+--Group:Methodist Members
+----No Users
+
+--Group:Methodist Owners
+----No Users
+
+--Group:Methodist Visitors
+----No Users
+
+--Group:Metlife 2 Members
+----No Users
+
+--Group:Metlife 2 Owners
+----No Users
+
+--Group:Metlife 2 Visitors
+----No Users
+
+--Group:Micron Members
+----No Users
+
+--Group:Micron Owners
+----No Users
+
+--Group:Micron Visitors
+----No Users
+
+--Group:Microsoft Members
+----No Users
+
+--Group:Microsoftmosaic Members
+----No Users
+
+--Group:Microsoftmosaic Owners
+----No Users
+
+--Group:Microsoftmosaic Visitors
+----No Users
+
+--Group:Microsoft Owners
+----No Users
+
+--Group:Microsoft Visitors
+----No Users
+
+--Group:Milestone Members
+----No Users
+
+--Group:Milestone Owners
+----No Users
+
+--Group:Milestone Visitors
+----No Users
+
+--Group:Mindshift Members
+----No Users
+
+--Group:Mindshift Owners
+----No Users
+
+--Group:Mindshift Visitors
+----No Users
+
+--Group:Mission Health Systems Members
+----No Users
+
+--Group:Mission Health Systems Owners
+----No Users
+
+--Group:Mission Health Systems Visitors
+----No Users
+
+--Group:Morris Manning and Martin_ LLP Members
+----No Users
+
+--Group:Morris Manning and Martin_ LLP Owners
+----No Users
+
+--Group:Mosaicdemo Members
+----No Users
+
+--Group:Mosaicdemo Owners
+----No Users
+
+--Group:Mosaic Demo Three Members
+----No Users
+
+--Group:Mosaic Demo Three Owners
+----No Users
+
+--Group:Mosaic Demo Three Visitors
+----No Users
+
+--Group:Mosaicdemo Visitors
+----No Users
+
+--Group:Mosaic Members
+----No Users
+
+--Group:Mosaic Owners
+----No Users
+
+--Group:Mosaic User_s Group Members
+----No Users
+
+--Group:Mosaic User_s Group Owners
+----No Users
+
+--Group:Mosaic User_s Group Visitors
+----No Users
+
+--Group:Mosaic Visitors
+----No Users
+
+--Group:Motorola Members
+----No Users
+
+--Group:Motorola Owners
+----No Users
+
+--Group:Motorola Visitors
+----No Users
+
+--Group:nestle
+----No Users
+
+--Group:NKU Members
+----No Users
+
+--Group:NKU Owners
+----No Users
+
+--Group:NKU Visitors
+----No Users
+
+--Group:Northwestern University Members
+----No Users
+
+--Group:Northwestern University Owners
+----No Users
+
+--Group:Northwestern University Visitors
+----No Users
+
+--Group:Office Images Inc. Members
+----No Users
+
+--Group:Office Images Inc. Owners
+----No Users
+
+--Group:Office Images Inc. Visitors
+----No Users
+
+--Group:Olson Members
+----No Users
+
+--Group:Olson Owners
+----No Users
+
+--Group:Olson Visitors
+----No Users
+
+--Group:Orange Members
+----No Users
+
+--Group:Orange Owners
+----No Users
+
+--Group:Orange Visitors
+----No Users
+
+--Group:Ottobock Members
+----No Users
+
+--Group:Ottobock Owners
+----No Users
+
+--Group:Ottobock Visitors
+----No Users
+
+--Group:Owners
+----No Users
+
+--Group:paul Members
+----No Users
+
+--Group:paul Owners
+----No Users
+
+--Group:paul Visitors
+----No Users
+
+--Group:Pennymac Visitors
+----No Users
+
+--Group:phoenix Members
+----No Users
+
+--Group:phoenix Owners
+----No Users
+
+--Group:phoenix Visitors
+----No Users
+
+--Group:Pillsbury Members
+----No Users
+
+--Group:Pillsbury Owners
+----No Users
+
+--Group:Pillsbury Visitors
+----No Users
+
+--Group:PMC 2 Members
+----No Users
+
+--Group:PMC 2 Owners
+----No Users
+
+--Group:PMC 2 Visitors
+----No Users
+
+--Group:PMC Coordinator
+----No Users
+
+--Group:PMC Design
+----No Users
+
+--Group:PMC Management
+----No Users
+
+--Group:PMC PMs
+----No Users
+
+--Group:PMC Sales
+----No Users
+
+--Group:PNC Members
+----No Users
+
+--Group:PNC Owners
+----No Users
+
+--Group:PNC Visitors
+----No Users
+
+--Group:Price List Members
+----No Users
+
+--Group:Price List Owners
+----No Users
+
+--Group:Price List Visitors
+----No Users
+
+--Group:Price Modern Carolina Members
+----No Users
+
+--Group:Price Modern Carolina Owners
+----No Users
+
+--Group:Price Modern Carolina Visitors
+----No Users
+
+--Group:Proctor & Gamble Members
+----No Users
+
+--Group:Proctor & Gamble Owners
+----No Users
+
+--Group:Puma Members
+----No Users
+
+--Group:Puma Owners
+----No Users
+
+--Group:Puma Visitors
+----No Users
+
+--Group:Quick Deploy Users
+----No Users
+
+--Group:Raytheon-Aberdeen Members
+----No Users
+
+--Group:Raytheon-Aberdeen Owners
+----No Users
+
+--Group:Raytheon-Aberdeen Visitors
+----No Users
+
+--Group:RBC CM Members
+----No Users
+
+--Group:RBC CM Owners
+----No Users
+
+--Group:RBC Members
+----No Users
+
+--Group:RBC Owners
+----No Users
+
+--Group:RBC Visitors
+----No Users
+
+--Group:RBC WM Members
+----No Users
+
+--Group:RBC WM Owners
+----No Users
+
+--Group:RBC WM Visitors
+----No Users
+
+--Group:Redhat Members
+----No Users
+
+--Group:Redhat Owners
+----No Users
+
+--Group:Redhat Visitors
+----No Users
+
+--Group:Reinsurance Members
+----No Users
+
+--Group:Reinsurance Owners
+----No Users
+
+--Group:Reinsurance Visitors
+----No Users
+
+--Group:Restricted Readers
+----No Users
+
+--Group:RGA Members
+----No Users
+
+--Group:RGA Owners
+----No Users
+
+--Group:RGA Visitors
+----No Users
+
+--Group:Rob Members
+----No Users
+
+--Group:Rob Owners
+----No Users
+
+--Group:Rob Visitors
+----No Users
+
+--Group:Roche Members
+----No Users
+
+--Group:Roche Owners
+----No Users
+
+--Group:Roche Visitors
+----No Users
+
+--Group:Sales
+----No Users
+
+--Group:salesforce.com Members
+----No Users
+
+--Group:salesforce.com Owners
+----No Users
+
+--Group:salesforce.com Visitors
+----No Users
+
+--Group:Sanford Health Members
+----No Users
+
+--Group:Sanford Health Owners
+----No Users
+
+--Group:Sanford Health Visitors
+----No Users
+
+--Group:sas Members
+----No Users
+
+--Group:sas Owners
+----No Users
+
+--Group:sas Visitors
+----No Users
+
+--Group:Schneider Members
+----No Users
+
+--Group:Schneider Owners
+----No Users
+
+--Group:Schneider Visitors
+----No Users
+
+--Group:SECU Members
+----No Users
+
+--Group:SECU Owners
+----No Users
+
+--Group:SECU Visitors
+----No Users
+
+--Group:shelley Members
+----No Users
+
+--Group:shelley Owners
+----No Users
+
+--Group:shelley Visitors
+----No Users
+
+--Group:Shell Members
+----No Users
+
+--Group:Shell Owners
+----No Users
+
+--Group:Shell Visitors
+----No Users
+
+--Group:socal Members
+----No Users
+
+--Group:socal Owners
+----No Users
+
+--Group:socal Visitors
+----No Users
+
+--Group:SPX Members
+----No Users
+
+--Group:SPX Owners
+----No Users
+
+--Group:SPX Visitors
+----No Users
+
+--Group:SROSE Members
+----No Users
+
+--Group:SROSE Owners
+----No Users
+
+--Group:srose_test Members
+----No Users
+
+--Group:srose_test Owners
+----No Users
+
+--Group:srose_test Visitors
+----No Users
+
+--Group:SROSE Visitors
+----No Users
+
+--Group:SSG Members
+----No Users
+
+--Group:SSG Owners
+----No Users
+
+--Group:SSG Visitors
+----No Users
+
+--Group:SSM Members
+----No Users
+
+--Group:SSM Owners
+----No Users
+
+--Group:SSM Visitors
+----No Users
+
+--Group:Stanley Members
+----No Users
+
+--Group:Stanley Owners
+----No Users
+
+--Group:Stanley Visitors
+----No Users
+
+--Group:State Of Tennessee Members
+----No Users
+
+--Group:State Of Tennessee Owners
+----No Users
+
+--Group:State Of Tennessee Visitors
+----No Users
+
+--Group:St. Jude Medical Members
+----No Users
+
+--Group:St. Jude Medical Owners
+----No Users
+
+--Group:St. Jude Medical Visitors
+----No Users
+
+--Group:St. Rita_s Members
+----No Users
+
+--Group:St. Rita_s Owners
+----No Users
+
+--Group:St. Rita_s Visitors
+----No Users
+
+--Group:Style Resource Readers
+----Users
+    Everyone, c:0(.s|true
+    NT AUTHORITY\authenticated users, NT AUTHORITY\authenticated users
+    NT AUTHORITY\authenticated users, c:0!.s|windows
+
+--Group:SuperValu Members
+----No Users
+
+--Group:SuperValu Owners
+----No Users
+
+--Group:SuperValu Visitors
+----No Users
+
+--Group:Sutter Health Members
+----No Users
+
+--Group:Sutter Health Owners
+----No Users
+
+--Group:Sutter Health Visitors
+----No Users
+
+--Group:Tac Members
+----No Users
+
+--Group:Tac Owners
+----No Users
+
+--Group:Tac Visitors
+----No Users
+
+--Group:TacWorldwide Members
+----No Users
+
+--Group:TacWorldwide Owners
+----No Users
+
+--Group:TacWorldwide Visitors
+----No Users
+
+--Group:TE Connect Members
+----No Users
+
+--Group:TE Connect Owners
+----No Users
+
+--Group:TE Connect Visitors
+----No Users
+
+--Group:test4 Members
+----No Users
+
+--Group:test4 Owners
+----No Users
+
+--Group:test4 Visitors
+----No Users
+
+--Group:testaccess Members
+----No Users
+
+--Group:testaccess Owners
+----No Users
+
+--Group:testaccess Visitors
+----No Users
+
+--Group:Test Site Members
+----No Users
+
+--Group:Test Site Owners
+----No Users
+
+--Group:Test Site Visitors
+----No Users
+
+--Group:The Methodist Members
+----No Users
+
+--Group:The Methodist Owners
+----No Users
+
+--Group:The Methodist Visitors
+----No Users
+
+--Group:The World Bank Members
+----No Users
+
+--Group:The World Bank Owners
+----No Users
+
+--Group:The World Bank Visitors
+----No Users
+
+--Group:Thomson Reuters Members
+----No Users
+
+--Group:Thomson Reuters Owners
+----No Users
+
+--Group:Thomson Reuters Visitors
+----No Users
+
+--Group:Thyssen Krupp Members
+----No Users
+
+--Group:Thyssen Krupp Owners
+----No Users
+
+--Group:Thyssen Krupp Visitors
+----No Users
+
+--Group:TMC Members
+----No Users
+
+--Group:TMC Owners
+----No Users
+
+--Group:TMC Visitors
+----No Users
+
+--Group:Toyota Members
+----No Users
+
+--Group:Toyota Owners
+----No Users
+
+--Group:Toyota Visitors
+----No Users
+
+--Group:TPS Reports_ International Members
+----No Users
+
+--Group:TPS Reports_ International Owners
+----No Users
+
+--Group:Translation Managers
+----No Users
+
+--Group:Tri State Labs Members
+----No Users
+
+--Group:Tri State Labs Owners
+----No Users
+
+--Group:Tri State Labs Visitors
+----No Users
+
+--Group:Trivati Members
+----No Users
+
+--Group:Trivati Owners
+----No Users
+
+--Group:Trivati Visitors
+----No Users
+
+--Group:Twin Cities Public Television Members
+----No Users
+
+--Group:Twin Cities Public Television Owners
+----No Users
+
+--Group:Twin Cities Public Television Visitors
+----No Users
+
+--Group:TW Telecom Members
+----No Users
+
+--Group:TW Telecom Owners
+----No Users
+
+--Group:TW Telecom Visitors
+----No Users
+
+--Group:Tyco Members
+----No Users
+
+--Group:Tyco Owners
+----No Users
+
+--Group:Tyco Visitors
+----No Users
+
+--Group:UNC Members
+----No Users
+
+--Group:UNC Owners
+----No Users
+
+--Group:UNC Visitors
+----No Users
+
+--Group:Union Bank Members
+----No Users
+
+--Group:Union Bank Owners
+----No Users
+
+--Group:Union Bank Visitors
+----No Users
+
+--Group:UnitedHealth Group Members
+----No Users
+
+--Group:UnitedHealth Group Owners
+----No Users
+
+--Group:UnitedHealth Group Visitors
+----No Users
+
+--Group:University of Oregan Members
+----No Users
+
+--Group:University of Oregan Owners
+----No Users
+
+--Group:University of Oregan Visitors
+----No Users
+
+--Group:University of Oregon Members
+----No Users
+
+--Group:University of Oregon Owners
+----No Users
+
+--Group:University of Oregon Visitors
+----No Users
+
+--Group:University of Texas Members
+----No Users
+
+--Group:University of Texas Owners
+----No Users
+
+--Group:University of Texas Visitors
+----No Users
+
+--Group:UNR Members
+----No Users
+
+--Group:UNR Owners
+----No Users
+
+--Group:UNR Visitors
+----No Users
+
+--Group:UPMC Members
+----No Users
+
+--Group:UPMC Owners
+----No Users
+
+--Group:UPMC Visitors
+----No Users
+
+--Group:USAF Members
+----No Users
+
+--Group:USAF Owners
+----No Users
+
+--Group:USAF Visitors
+----No Users
+
+--Group:USAREC Members
+----No Users
+
+--Group:USAREC Owners
+----No Users
+
+--Group:USAREC Visitors
+----No Users
+
+--Group:US Courts Members
+----No Users
+
+--Group:US Courts Owners
+----No Users
+
+--Group:US Courts Visitors
+----No Users
+
+--Group:UVA Members
+----No Users
+
+--Group:UVA Owners
+----No Users
+
+--Group:UVA Visitors
+----No Users
+
+--Group:VANCHCS_VISN21 Members
+----No Users
+
+--Group:VANCHCS_VISN21 Owners
+----No Users
+
+--Group:VANCHCS_VISN21 Visitors
+----No Users
+
+--Group:Verifone Members
+----No Users
+
+--Group:Verifone Owners
+----No Users
+
+--Group:Verifone Visitors
+----No Users
+
+--Group:Vertex Members
+----No Users
+
+--Group:Vertex Owners
+----No Users
+
+--Group:Vertex Visitors
+----No Users
+
+--Group:Vestas Members
+----No Users
+
+--Group:Vestas Owners
+----No Users
+
+--Group:Vestas Visitors
+----No Users
+
+--Group:Visitors
+----No Users
+
+--Group:Volvo Members
+----No Users
+
+--Group:Volvo Owners
+----No Users
+
+--Group:Volvo Visitors
+----No Users
+
+--Group:Weatherford Members
+----No Users
+
+--Group:Weatherford Owners
+----No Users
+
+--Group:Weatherford Test Members
+----No Users
+
+--Group:Weatherford Test Owners
+----No Users
+
+--Group:Weatherford Visitors
+----No Users
+
+--Group:Wellpoint Members
+----No Users
+
+--Group:Wellpoint Owners
+----No Users
+
+--Group:Wellpoint Visitors
+----No Users
+
+--Group:Wells Fargo Members
+----No Users
+
+--Group:Wells Fargo Owners
+----No Users
+
+--Group:Wells Fargo Visitors
+----No Users
+
+--Group:WestCoast Members
+----No Users
+
+--Group:WestCoast Owners
+----No Users
+
+--Group:WestCoast Visitors
+----No Users
+
+--Group:Westjet Members
+----No Users
+
+--Group:Westjet Owners
+----No Users
+
+--Group:Westjet Visitors
+----No Users
+
+--Group:Whirlpool Members
+----No Users
+
+--Group:Whirlpool Owners
+----No Users
+
+--Group:Whirlpool Visitors
+----No Users
+
+--Group:Wolverine World Wide Members
+----No Users
+
+--Group:Wolverine World Wide Owners
+----No Users
+
+--Group:Wolverine World Wide Visitors
+----No Users
+
+--Group:World Bank Mosaic Members
+----No Users
+
+--Group:World Bank Mosaic Owners
+----No Users
+
+--Group:World Bank Mosaic Visitors
+----No Users
+
+--Group:Yardi Members
+----No Users
+
+--Group:Yardi Owners
+----No Users
+
+--Group:Yardi Visitors
+----No Users
+
+PS C:\Users\sp_dev> $SPSite.url + "----SPSite End"
+http://hector7:55555/hgst----SPSite End
+PS C:\Users\sp_dev>
+PS C:\Users\sp_dev>

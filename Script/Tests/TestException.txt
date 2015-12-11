@@ -1,0 +1,16 @@
+function test()
+{
+	try
+	{
+		throw "ex"
+	}
+	catch
+	{
+		"catched"
+	}
+	
+	"end"
+}
+
+test
+

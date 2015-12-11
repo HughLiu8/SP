@@ -1,0 +1,11 @@
+
+$from = "C:\WorkHLiu\SharePoint\Script\MakeBuild\TestMove\From"
+$to = "C:\WorkHLiu\SharePoint\Script\MakeBuild\TestMove\To"
+Get-ChildItem -Path $from -Recurse  | 
+          Copy-Item -Destination {
+            if ($_.PSIsContainer) {
+              Join-Path $to $_.Parent.FullName.Substring($from.length)
+            } else {
+              Join-Path $to $_.FullName.Substring($from.length)
+            }
+           } -Force -Exclude $exclude  

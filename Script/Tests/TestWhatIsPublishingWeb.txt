@@ -1,0 +1,32 @@
+$WebAppURL = "https://www22.kisp.com/"
+$SPweb = get-spwebapplication -identity $WebAppURL
+
+foreach ($SPSite in $SPweb.sites)
+{
+	foreach($web in $SPSite.AllWebs) 
+	{
+		$webshowed = 0
+		$weburl = $web.url
+		"*** WebUrl:" + $weburl
+		$global:webshowed = 0
+        if ([Microsoft.SharePoint.Publishing.PublishingWeb]::IsPublishingWeb($web)) {
+            $pWeb = [Microsoft.SharePoint.Publishing.PublishingWeb]::GetPublishingWeb($web)
+            $pages = $pWeb.PagesList
+              
+            "****** Processing Publishing Web: " + $pWeb.Url
+                                            
+        }
+        else {
+            "   Not a publishing web: " + $web.Url + ". Looking for Site Pages library."
+            $pages = $null
+            $pages = $web.Lists["Site Pages"]
+            
+            if ($pages) {
+				"****** Processing Web of Site Pages library: " + $pWeb.Url
+                #"   " + $pages.Title + "found."
+                              
+            }          
+        }
+	}
+}
+
