@@ -4,11 +4,6 @@ $SPweb = get-spwebapplication -identity $WebAppURL
 
 foreach ($SPSite in $SPweb.sites)
 {
-	if($SPSite.url -ne "https://www22.kisp.com/sites/stephen")
-	{
-		continue;
-	}
-
 	"site.url:" + $SPSite.url
 	foreach($web in $SPSite.AllWebs) 
 	{
