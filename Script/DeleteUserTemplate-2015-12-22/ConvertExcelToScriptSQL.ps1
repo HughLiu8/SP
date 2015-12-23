@@ -1,5 +1,5 @@
 $ExcelDirectory = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\Excels"
-$OutPutDirectory = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\OutputScriptsSQL\"
+$OutPutDirectory = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\OutputScripts\"
 $TemplateScriptPath = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\TemplateScriptSQL.sql"
 
 $global:strArrUserIDS = ""
@@ -19,10 +19,22 @@ Foreach-Object{
 
 	
 	$result = readExcel $_.FullName
+    
+    $OutputSubDir = $OutPutDirectory + $global:strOriginalPrefix + "\"
+    MakeDir $OutputSubDir
 
     $OutputFileName = "SharePoint_sql_RemoveUsers_" + $global:strOriginalPrefix + ".sql"
-	$scriptpath = $OutPutDirectory + $OutputFileName
+	$scriptpath = $OutputSubDir + $OutputFileName
 	modifyScript $scriptpath $content
+}
+
+function MakeDir($OutputSubDir)
+{
+    if((Test-Path $OutputSubDir) -eq $false)
+    {
+    	New-Item -path $OutputSubDir -type directory
+    }
+
 }
 
 function GetPrefix($filename)

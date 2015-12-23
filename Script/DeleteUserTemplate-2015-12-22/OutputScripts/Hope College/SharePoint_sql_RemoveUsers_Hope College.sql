@@ -5,8 +5,8 @@ declare @UserId uniqueidentifier
 insert @Users (UserId)
 Select  UserId
 from aspnet_Users
-where  UserName like 'HMS_%' and (UserName not in 
-('HMS_MosaicDemo', 'HMS_Mosaic', 'HMS_System'))
+where  UserName like 'HughTemplateWildcard_%' and (UserName not in 
+(HughTemplateUsers))
 
 DECLARE myCursor CURSOR LOCAL FAST_FORWARD FOR
     SELECT UserId

@@ -8,6 +8,8 @@ $global:strCurPrefix = ""
 
 $mapSpecialPrefix = @{ WorldBank = "WorldBankMosaic"; ERAC = "ERAC1"; LDS = "LDS1"; IngersollRand = "ir"}
 
+
+
 $content = Get-Content $TemplateScriptPath
 Get-ChildItem $ExcelDirectory -Filter *.* | `
 Foreach-Object{
@@ -16,13 +18,24 @@ Foreach-Object{
     $global:strOriginalPrefix = ""
 	$filename = [System.IO.Path]::GetFileNameWithoutExtension($_.FullName)
     GetPrefix $filename
-
 	
 	$result = readExcel $_.FullName
 
-    $OutputFileName = "SharePoint_ps_RemoveUsers_" + $global:strOriginalPrefix + ".ps1"
-	$scriptpath = $OutPutDirectory + $OutputFileName
+    $OutputSubDir = $OutPutDirectory + $global:strOriginalPrefix + "\"
+    MakeDir $OutputSubDir
+    
+    $OutputFileName = "SharePoint_ps_RemoveUsers_" + $global:strOriginalPrefix + ".ps1"    
+	$scriptpath = $OutputSubDir + $OutputFileName
 	modifyScript $scriptpath $content
+}
+
+function MakeDir($OutputSubDir)
+{
+    if((Test-Path $OutputSubDir) -eq $false)
+    {
+    	New-Item -path $OutputSubDir -type directory
+    }
+
 }
 
 function GetPrefix($filename)
