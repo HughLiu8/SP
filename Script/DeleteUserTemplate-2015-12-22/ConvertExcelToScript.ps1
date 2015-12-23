@@ -1,3 +1,4 @@
+
 $ExcelDirectory = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\Excels"
 $OutPutDirectory = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\OutputScripts\"
 $TemplateScriptPath = "C:\WorkHLiu\GH\SP\Script\DeleteUserTemplate-2015-12-22\TemplateScript.txt"
@@ -6,7 +7,7 @@ $global:strArrUserIDS = ""
 $global:strOriginalPrefix = ""
 $global:strCurPrefix = ""
 
-$mapSpecialPrefix = @{ WorldBank = "WorldBankMosaic"; ERAC = "ERAC1"; LDS = "LDS1"; IngersollRand = "ir"}
+$mapSpecialPrefix = @{ WorldBank = "WorldBankMosaic"; ERAC = "ERAC1"; LDS = "LDS1"; IngersollRand = "ir"; MedStar = "MedStar1"; Sutter = "sutterhealth" }
 
 
 

@@ -1,4 +1,4 @@
-$WebAppURL = "https://saviosp.kisp.com/"
+$WebAppURL = "http://hector7:1111"
 $SPweb = get-spwebapplication -identity $WebAppURL
 
 
@@ -7,10 +7,57 @@ foreach ($SPSite in $SPweb.sites)
 {
 	$site = $SPSite.OpenWeb()
 	"site url:" + $SPSite.url
+	
+	$site = $SPSite.OpenWeb()
+	$groups = $site.sitegroups
+	foreach ($grp in $groups) 
+	{
+		$count = $grp.users.count;
+		$groupName = $grp.name
+		"--Group:" + $groupName 
+		
+		if($count -gt 0)
+		{
+			"----Users"
+			foreach ($user in $grp.users) 
+			{
+				"    " + $user.name
+			}	
+		}
+		else
+		{
+			"----No Users"
+		}
+		"    "
+	}
+	
+	"SPSite End---" + $SPSite.url + "----SPSite End"	
+	
 	#site
 	foreach($web in $SPSite.AllWebs) 
 	{
 		"*** web url:" + $web.Url	
+		$groups = $web.sitegroups
+		foreach ($grp in $groups) 
+		{
+			$count = $grp.users.count;
+			$groupName = $grp.name
+			"--Group:" + $groupName 
+			
+			if($count -gt 0)
+			{
+				"----Users"
+				foreach ($user in $grp.users) 
+				{
+					"    " + $user.name
+				}	
+			}
+			else
+			{
+				"----No Users"
+			}
+			"    "
+		}
 
 	}
 }
