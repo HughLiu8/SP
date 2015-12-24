@@ -1,2 +1,3 @@
 P0~P312_The last topic to cover in this chapter is the security infrastructure
-P383~
+P383~P489 BCS allows accessing external data by using a CRUDQ
+P530~538
