@@ -1,4 +1,10 @@
-C:\Program Files\Common Files\Microsoft Shared\Web Server Extensions\15\TEMPLATE\
-
 GAC
 C:\Windows\Microsoft.NET\assembly\GAC_MSIL\KispSharePoint\v4.0_1.0.4.886__cf35bea022ce4543
+
+
+Layout (http://hector7:1111/snaptrackerweb60_0_1/A-BACHELOR/_Layouts/15)
+C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\TEMPLATE\LAYOUTS
+
+
+SharePointRoot
+C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15
