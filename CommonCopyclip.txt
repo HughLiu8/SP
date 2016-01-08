@@ -8,3 +8,7 @@ C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15\TEMPLATE
 
 SharePointRoot
 C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15
+
+
+for TFS recognize the changes
+tfpt online /adds /deletes /diff /recursive PATH
