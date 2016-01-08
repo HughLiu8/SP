@@ -61,15 +61,7 @@ function UpdateFile($web, $SrcFilePath, $DocumentName, $DestURL)
 		}	
 		
 		$name = GetLatestModifiedUserName $CurFile
-		$bInternalAccount = IsInternalAccount $name
-        if($bInternalAccount -eq $false)
-        {
-            $output = "****** The file - " + $DestURL + " is last modified by " + $name +", not by internal account - " + $arrInternalAccount
-	        Write-Output $output
 
-			return
-        }
-	
 		$stream = [IO.File]::OpenRead($SrcFilePath)
 	
 		#"CurFile.CheckOutStatus: " + $CurFile.CheckOutStatus
