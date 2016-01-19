@@ -51,6 +51,16 @@ function UploadFile($web, $SrcFilePath, $DocumentName, $DestURL)
         }       
 			    
         $Result = $DocumentFolder.files.Add($DestURL, $stream, $true)
+        $CurFile = $web.GetFile($DestURL)
+        if($CurFile.CheckOutStatus -ne "None")
+		{
+            $CurFile.CheckIn($checkInComment);  
+        }
+        else
+        {
+            $CurFile.CheckOut();
+            $CurFile.CheckIn($checkInComment);  
+        }
 		   
 		if($stream -ne $null)
 		{
@@ -58,6 +68,11 @@ function UploadFile($web, $SrcFilePath, $DocumentName, $DestURL)
 		}                                   
 		try
 		{
+		    if($CurFile.CheckOutStatus -ne "None")
+		    {
+               $CurFile.CheckIn($checkInComment);  
+            }
+
 			$CurFile.Publish($publishComment);     
 		}
 		catch
