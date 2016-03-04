@@ -1,0 +1,11 @@
+document.addEventListener('click', function(event) {
+    if (/* your disabled check here */) {
+      // Kill the event
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    // Doing nothing in this method lets the event proceed as normal
+  },
+  true  // Enable event capturing!
+);

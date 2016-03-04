@@ -1,0 +1,12 @@
+1) .net membership setup in IIS (refer to FBA.docx)
+
+2) setup webapp + site collection (refer to WebApp + SiteCol.docx)
+
+3) other setups (refer to Other.docx)
+
+*Dev can skip the next 2 until needed*
+
+4) setup Search (refer to Search.docx)
+
+5) *if implementing follow feature* setup mysite (refer to mysite.docx)
+

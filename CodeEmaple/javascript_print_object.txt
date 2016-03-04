@@ -1,0 +1,19 @@
+// this is our sample object with 3 properties
+var sampleObject = { x:1, y:2, z:3  };
+
+var alertText = ' ';
+/*Put the name of your own object after "in",
+  and you can change the text "property"
+  to be whatever you please.
+*/
+
+for (property in sampleObject) {
+
+ /*this will create one string with all the Javascript 
+  properties and values to avoid multiple alert boxes: */
+
+  alertText += property + ':' + sampleObject[property]+'; ';
+
+}
+
+alert(alertText);

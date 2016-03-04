@@ -1,0 +1,12 @@
+            SPUser theUser = SPContext.Current.Web.CurrentUser;
+            m_strUserName = theUser.LoginName;
+
+            String csName = "InitUserNameSciprt_HUGH";
+            Type csType = this.GetType();
+            StringBuilder csText = new StringBuilder();
+            csText.Append("<script type=\"text/javascript\"> ");
+            string strValue = string.Format(" var strUserName = '{0}' ", m_strUserName);
+            csText.Append(strValue);
+            csText.Append(" </script>");
+
+            Page.ClientScript.RegisterClientScriptBlock(csType, csName, csText.ToString());

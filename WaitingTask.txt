@@ -1,0 +1,8 @@
+2016-02-23
+1. Search issue
+2. Generate report
+3. Detailed Report
+
+
+2016-03-03
+Check is there data around 4:15 pm in google analytics

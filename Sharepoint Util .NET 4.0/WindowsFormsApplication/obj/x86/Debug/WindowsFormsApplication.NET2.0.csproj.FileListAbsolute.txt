@@ -1,0 +1,9 @@
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\bin\Debug\WindowsFormsApplication.NET2.0.exe
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\bin\Debug\WindowsFormsApplication.NET2.0.pdb
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\WindowsFormsApplication.NET2._0.Form1.resources
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\WindowsFormsApplication.NET2._0.Properties.Resources.resources
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\ResGen.read.1.tlog
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\ResGen.write.1.tlog
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\WindowsFormsApplication.NET2.0.exe
+c:\users\syeung\documents\visual studio 2010\Projects\WindowsFormsApplication.NET2.0\WindowsFormsApplication.NET2.0\obj\x86\Debug\WindowsFormsApplication.NET2.0.pdb
