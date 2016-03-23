@@ -12,3 +12,29 @@ C:\Program Files\Common Files\microsoft shared\Web Server Extensions\15
 
 for TFS recognize the changes
 tfpt online /adds /deletes /diff /recursive PATH
+
+
+
+After running the Configure Wizzard
+http://vmspqaw27:12345/_admin/adminconfigintro.aspx?scenarioid=adminconfig&welcomestringid=farmconfigurationwizard_welcome
+
+
+Export and import web.
+Export-SPWeb "http://vmspqaw27:7777/sites/Red Thread" -Path "C:/7777/Red Thread/export.cmp"
+Import-SPWeb "http://vmspqaw27:9999" -Path "C:/7777/root/export.cmp" -UpdateVersions Overwrite
+
+
+
+Backup and Resotre sitecollection 
+
+Backup-SPSite "http://vmspqaw27:7777" -Path "C:/7777/backup/root.bak"
+Restore-SPSite http://vmspqaw27:9999 -Path "C:/7777/backup/root.bak"
+
+
+Backup-SPSite "http://vmspqaw27:7777/sites/kispservices" -Path "C:/7777/backup/kispservices.bak"
+Restore-SPSite http://vmspqaw27:9999/sites/kispservices -Path "C:/7777/backup/kispservices.bak"
+
+
+Backup-SPSite "http://vmspqaw27:7777/sites/Red Thread " -Path "C:/7777/backup/Red Thread.bak"
+Restore-SPSite "http://vmspqaw27:9999/sites/Red Thread" -Path "C:/7777/backup/Red Thread.bak"
+
