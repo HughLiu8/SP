@@ -1,0 +1,32 @@
+﻿Mount-SPContentDatabase –Name "WSS_Content_demo1" –WebApplication http://vmspqaw27:7777 -Verbose
+
+Upgrade-SPSite http://vmspqaw27:7777/ -VersionUpgrade -Unthrottled -Verbose
+
+Export-SPWeb http://vmspqaw27:7777/ -Path "D:\Install\demo\demo6.cm" -IncludeUserSecurity -IncludeVersions All -Verbose
+
+
+
+Mount-SPContentDatabase –Name "WSS_Content_rbc" –WebApplication https://www22.kisp.com/rbc -Verbose
+WSS_Content_ge
+
+Upgrade-SPSite https://www22.kisp.com -VersionUpgrade -Unthrottled -Verbose
+
+halliburtonsp
+Export-SPWeb https://www22.kisp.com/halliburton -Path "D:\ToUpgrade\Production\halliburton\hall.cmp" -IncludeUserSecurity -IncludeVersions All -Verbose
+Import-SPWeb https://www22.kisp.com/halliburton -Path "D:\ToUpgrade\Production\halliburton\hall.cmp" -IncludeUserSecurity -UpdateVersions Overwrite
+
+
+Mount-SPContentDatabase –Name "WSS_Content_rbc1" –WebApplication https://www22.kisp.com -Verbose
+
+
+Import-SPWeb https://www22.kisp.com/rbc1 -Path "D:\Install\rbc1\rbc.cmp" -IncludeUserSecurity -UpdateVersions Overwrite
+
+Restore-SPSite -Identity https://www22.kisp.com/rbc1 -Path "D:\Install\rbc1\rbc.cmp" -Confirm:$false -Force -Verbose
+
+
+Restore-SPSite -Identity https://www22.kisp.com/demo -Path "D:\Conversions\demo\demo.cmp" -Confirm:$false -Force -Verbose
+
+To create QA site:
+1. Get the database backup (.bak)
+2. Restore the databaseRun (replacing with according values:) Mount-SPContentDatabase –Name "WSS_Content_rbc1" –WebApplication https://www22.kisp.com -Verbose
+

@@ -1,0 +1,21 @@
+
+Deploy WSP
+
+https://www.concurrency.com/blog/w/how-to-deploy-a-sharepoint-wsp
+
+Add-SPSolution c:/PortalFeature.wsp
+Install-SPSolution –WebApplication http://hector7:7777 -FullTrustBinDeployment –Identity PortalFeature.wsp 
+Install-SPSolution –WebApplication http://hector7:7777 -GacDeployment -FullTrustBinDeployment –Identity PortalFeature.wsp 
+
+Enable-SPFeature -identity "KispUserManagerment" -URL http://hector7:7777
+
+
+
+Undeploy WSP
+
+Uninstall-SPSolution -Identity PortalFeature.wsp -WebApplication http://hector7:1111
+Remove-SPSolution PortalFeature.wsp
+
+Disable-SPFeature -identity e7f587c0-26ba-43a8-a139-475774aea268 -URL http://hector7:7777
+
+Get-SPFeature -Limit ALL | Where-Object {$_.DisplayName -like "*KispUserManagerment*"}
