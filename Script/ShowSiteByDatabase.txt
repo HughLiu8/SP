@@ -1,0 +1,3 @@
+Get-SPSite -Limit All  -ContentDatabase contentdbname | select url, @{label="Size";Expression={$_.usage.storage}}
+
+Get-SPSite -ContentDatabase "WSS_Content9999"

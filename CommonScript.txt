@@ -17,5 +17,6 @@ Uninstall-SPSolution -Identity PortalFeature.wsp -WebApplication http://hector7:
 Remove-SPSolution PortalFeature.wsp
 
 Disable-SPFeature -identity e7f587c0-26ba-43a8-a139-475774aea268 -URL http://hector7:7777
+Disable-SPFeature -identity PortalFeature.wsp -URL http://hector7:1111
 
 Get-SPFeature -Limit ALL | Where-Object {$_.DisplayName -like "*KispUserManagerment*"}
