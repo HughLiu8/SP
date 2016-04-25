@@ -20,3 +20,9 @@ Disable-SPFeature -identity e7f587c0-26ba-43a8-a139-475774aea268 -URL http://hec
 Disable-SPFeature -identity PortalFeature.wsp -URL http://hector7:1111
 
 Get-SPFeature -Limit ALL | Where-Object {$_.DisplayName -like "*KispUserManagerment*"}
+
+
+copy site
+
+Backup-SPSite "http://vmspqaw27:7777" -Path "C:/7777/backup/root.bak"
+Restore-SPSite http://vmspqaw27:9999 -Path "C:/7777/backup/root.bak" -force
