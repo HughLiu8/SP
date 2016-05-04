@@ -1,0 +1,38 @@
+$SiteURL = "https://ra.kisp.com/stateofflorida"
+
+
+$site = Get-SPSite $SiteURL 
+$web = $site.rootweb
+Write-Host -f Green "Found site $($web.Title)"
+
+function EnableListAnonymousAccess($ListDisplayName)
+{
+
+    $list = $web.Lists[$ListDisplayName]
+    if ($list) {
+        Write-Host -f Green "Found list $($list.Title)"
+ 
+        $list.BreakRoleInheritance($true, $false)
+        $list.AllowEveryoneViewItems = $true
+        Write-Host -f Yellow "Existing permissions: $($list.AnonymousPermMask64)"
+        $list.AnonymousPermMask64 = "ViewPages, OpenItems, ViewVersions, Open, UseClientIntegration, ViewFormPages, ViewListItems";
+        $list.Update();
+        Write-Host -f Yellow "Updated permissions.: $($list.AnonymousPermMask64)"
+        Write-Host -f Green "Anonymous access enabled on list"
+    }
+    else {
+        Write-Host -f Red "List $($ListDisplayName) not found"
+    }    
+}
+
+$spAssignment = Start-SPAssignment
+
+EnableListAnonymousAccess "Library"
+EnableListAnonymousAccess "Photo Gallery"
+EnableListAnonymousAccess "Product Standards"
+
+ 
+$web.Dispose()
+Write-Host
+Write-Host "Script Completed"
+Stop-SPAssignment $spAssignment
